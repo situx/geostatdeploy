@@ -25,6 +25,7 @@ collectionsjson = {"collections": [], "links": [
      "title": "this document as HTML"}]}
 collectionshtml = "<html><head></head><body><header><h1>Collections of " + str(deploypath) + "</h1></head>{{collectiontable}}<footer><a href=\"index.json\">This page as JSON</a></footer></body></html>"
 collectiontable = "<table><thead><th>Collection</th><th>Links</th></thead><tbody>"
+collectiontabletemp = "<table><thead><th>Collection</th><th>Links</th></thead><tbody>"
 
 landingpagejson = {"title": "Landing Page", "description": "Landing Page", "links": [{
     "href": str(deploypath) + "/index.json",
@@ -77,17 +78,21 @@ for file in os.listdir(rootdir):
         gdfbbox=gdf.total_bounds
         print(gdfbbox)
         fileid=file[0:file.rfind(".")]
-        if not os.path.exists(outpath+"/collections/"+fileid):
-            os.makedirs(outpath+"/collections/"+fileid)
         curcoll={"id":fileid,"name":fileid,"links":[
         {"href":deploypath+"/collections/"+fileid+"/index.json","rel":"collection","type":"application/json","title":"Collection as JSON"},
         {"href":deploypath+"/collections/"+fileid+"/","rel":"collection","type":"text/html","title":"Collection as HTML"},
         {"href":deploypath+"/collections/"+fileid+"/index.ttl","rel":"collection","type":"text/ttl","title":"Collection as TTL"}
         ],"extent":{"spatial":{"bbox":[gdfbbox[0],gdfbbox[2],gdfbbox[1],gdfbbox[3]],"crs":str(gdf.crs)}}}
         collectionsjson["collections"].append(curcoll)
+        if not os.path.exists(outpath+"/collections/"+fileid):
+            os.makedirs(outpath+"/collections/"+fileid)
         with open(outpath+"/collections/"+fileid+"/index.json", 'w',encoding="utf-8") as f:
             json.dump(curcoll, f,indent=2)
+        curcolhtml=collectiontabletemp+"<tr><td><a href=\""+fileid+"\">"+fileid+"</a></td><td><a href=\""+fileid+"/index.html\">[Collection as HTML]</a>&nbsp;<a href=\""+fileid+"/index.json/\">[Collection as JSON]</a></td></tr>"
+        with open(outpath+"/collections/"+fileid+"/index.html", 'w',encoding="utf-8") as f:
+            f.write(collectionshtml.replace("{{collectiontable}}", curcolhtml))
         geodict=gdf.to_geo_dict()
+        collectiontable+="<tr><td><a href=\""+fileid+"\">"+fileid+"</a></td><td><a href=\""+fileid+"/index.html\">[Collection as HTML]</a>&nbsp;<a href=\""+fileid+"/index.json/\">[Collection as JSON]</a></td></tr>"
         if not os.path.exists(outpath + "/collections/"+fileid+"/items/"):
             os.makedirs(outpath + "/collections/"+fileid+"/items/")
         with open(outpath + "/collections/"+fileid+"/items/index.json", 'w',encoding="utf-8") as f:
@@ -99,9 +104,16 @@ for file in os.listdir(rootdir):
                 os.makedirs(outpath + "/collections/"+fileid+"/items/"+str(fid)+"/")
             with open(outpath + "/collections/"+fileid+"/items/"+str(fid)+"/index.json", 'w',encoding="utf-8") as f:
                 json.dump(gdf.iloc[[i]].to_geo_dict()["features"][0], f,indent=2)  
+            with open(outpath + "/collections/"+fileid+"/items/"+str(fid)+"/index.html", 'w',encoding="utf-8") as f:
+                f.write(gdf.iloc[[i]].to_html())  
             i+=1                
-
+collectiontable+="</tbody></table>"
 with open(outpath + "/collections/index.json", 'w',encoding="utf-8") as f:
     json.dump(collectionsjson, f,indent=2)
+
+with open(outpath + "/collections/index.html", 'w',encoding="utf-8") as f:
+    f.write(collectionshtml.replace("{{collectiontable}}",collectiontable))
+    
+
 
 
