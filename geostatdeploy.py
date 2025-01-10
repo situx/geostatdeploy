@@ -61,7 +61,11 @@ conformancejson = {"conformsTo": ["http://www.opengis.net/spec/ogcapi-features-1
                                   "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/geojson"]}
 
 featurecollections={}
-
+with open(outpath + "/conformance/index.json", 'w',encoding="utf-8") as f:
+    json.dump(conformancejson, f,indent=2)
+    
+with open(outpath + "/index.json", 'w',encoding="utf-8") as f:
+    json.dump(landingpagejson, f,indent=2)
 
 createFolders(outpath)
 rootdir="."
@@ -69,7 +73,7 @@ counter=1
 for file in os.listdir(rootdir):
     print(file)
     if ".shp" in file or ".geojson" in file:
-        gdf = geopandas.read_file(rootdir+"/"+file)
+        gdf = geopandas.read_file(rootdir+"/"+file,encoding="utf-8")
         gdfbbox=gdf.total_bounds
         print(gdfbbox)
         fileid=file[0:file.rfind(".")]
@@ -84,10 +88,19 @@ for file in os.listdir(rootdir):
         with open(outpath+"/collections/"+fileid+"/index.json", 'w',encoding="utf-8") as f:
             json.dump(curcoll, f,indent=2)
         geodict=gdf.to_geo_dict()
+        if not os.path.exists(outpath + "/collections/"+fileid+"/items/"):
+            os.makedirs(outpath + "/collections/"+fileid+"/items/")
+        with open(outpath + "/collections/"+fileid+"/items/index.json", 'w',encoding="utf-8") as f:
+            json.dump(geodict, f,indent=2)
+        i=0
         for row in gdf.itertuples():
-            
-            
-            print(f"row with index {row.Index} has content <{row}>")
+            fid=gdf.iloc[[i]].to_geo_dict()["features"][0]["id"]
+            if not os.path.exists(outpath + "/collections/"+fileid+"/items/"+str(fid)+"/"):
+                os.makedirs(outpath + "/collections/"+fileid+"/items/"+str(fid)+"/")
+            with open(outpath + "/collections/"+fileid+"/items/"+str(fid)+"/index.json", 'w',encoding="utf-8") as f:
+                json.dump(gdf.iloc[[i]].to_geo_dict()["features"][0], f,indent=2)  
+            i+=1                
+
 with open(outpath + "/collections/index.json", 'w',encoding="utf-8") as f:
     json.dump(collectionsjson, f,indent=2)
 
