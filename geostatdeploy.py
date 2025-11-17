@@ -65,13 +65,13 @@ conformancejson = {"conformsTo": ["http://www.opengis.net/spec/ogcapi-features-1
                                   "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/geojson"]}
 
 featurecollections = {}
+createFolders(outpath)
 with open(outpath + "/conformance/index.json", 'w', encoding="utf-8") as f:
     json.dump(conformancejson, f, indent=2)
 
 with open(outpath + "/index.json", 'w', encoding="utf-8") as f:
     json.dump(landingpagejson, f, indent=2)
 
-createFolders(outpath)
 rootdir = "sampledata"
 counter = 1
 for file in os.listdir(rootdir):
