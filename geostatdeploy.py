@@ -4,9 +4,22 @@ from geojson_rewind import rewind
 import json
 import os
 
-outpath = "result"
-rootdir = "."
-deploypath = "https://situx.github.io/geostatdeploy/"
+
+
+parser=argparse.ArgumentParser()
+parser.add_argument("-i","--input",nargs='*',help="the input directory to parse for geo files",action="store",required=False,default=".")
+parser.add_argument("-o","--output",nargs='*',help="the output path(s)",action="store",required=False,default="result")
+parser.add_argument("-dp","--deploypath",help="the deploypath where the documentation will be hosted",action="store",default="https://situx.github.io/geostatdeploy/")
+parser.add_argument("-tp","--templatepath",help="the path of the HTML template",action="store",default="resources/html/")
+parser.add_argument("-tn","--templatename",help="the name of the HTML template",action="store",default="default")
+args, unknown=parser.parse_known_args()
+
+print(args)
+print("The following arguments were not recognized: "+str(unknown))
+
+outpath = args.output
+rootdir = args.input
+deploypath = args.deploypath
 
 if deploypath.endswith("/"):
     deploypath=deploypath[0:-1]
