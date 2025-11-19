@@ -30,6 +30,9 @@ def createFolders(outpath):
         os.makedirs(outpath + "/conformance/")
 
 
+if deploypath.endswith("/"):
+    deploypath=deploypath[0:-1]
+
 collectionsjson = {"collections": [], "links": [
     {"href": deploypath + "/collections/index.json", "rel": "self", "type": "application/json",
      "title": "this document as JSON"},
