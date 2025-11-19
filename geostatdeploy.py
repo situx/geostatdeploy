@@ -4,9 +4,9 @@ from geojson_rewind import rewind
 import json
 import os
 
-outpath = "public"
+outpath = "result"
 rootdir = "."
-deploypath = "https://situx.github.io/public/"
+deploypath = "https://situx.github.io/geostatdeploy/"
 
 apihtml = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" /><metaname=\"description\" content=\"SwaggerUI\"/><title>SwaggerUI</title><link rel=\"stylesheet\" href=\"https://unpkg.com/swagger-ui-dist/swagger-ui.css\" /></head><body><div id=\"swagger-ui\"></div><script src=\"https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js\" crossorigin></script><script>const swaggerUrl = \"" + str(
             deploypath) + "/api/index.json\"; const apiUrl = \"" + str(
