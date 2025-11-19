@@ -5,19 +5,19 @@
       "title": "LimesCoordinates_Kleinkastell",
       "links": [
         {
-          "href": "https://situx.github.io/public//collections/LimesCoordinates_Kleinkastell/index.json",
+          "href": "https://situx.github.io/geostatdeploy//collections/LimesCoordinates_Kleinkastell/index.json",
           "rel": "collection",
           "type": "application/json",
           "title": "Collection as JSON"
         },
         {
-          "href": "https://situx.github.io/public//collections/LimesCoordinates_Kleinkastell/indexc.html",
+          "href": "https://situx.github.io/geostatdeploy//collections/LimesCoordinates_Kleinkastell/indexc.html",
           "rel": "collection",
           "type": "text/html",
           "title": "Collection as HTML"
         },
         {
-          "href": "https://situx.github.io/public//collections/LimesCoordinates_Kleinkastell/index.ttl",
+          "href": "https://situx.github.io/geostatdeploy//collections/LimesCoordinates_Kleinkastell/index.ttl",
           "rel": "collection",
           "type": "text/ttl",
           "title": "Collection as TTL"
@@ -39,13 +39,13 @@
   ],
   "links": [
     {
-      "href": "https://situx.github.io/public//collections/index.json",
+      "href": "https://situx.github.io/geostatdeploy//collections/index.json",
       "rel": "self",
       "type": "application/json",
       "title": "this document as JSON"
     },
     {
-      "href": "https://situx.github.io/public//collections/indexc.html",
+      "href": "https://situx.github.io/geostatdeploy//collections/indexc.html",
       "rel": "alternate",
       "type": "text/html",
       "title": "this document as HTML"
