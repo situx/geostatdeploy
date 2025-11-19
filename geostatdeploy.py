@@ -4,7 +4,7 @@ from geojson_rewind import rewind
 import json
 import os
 
-outpath = "result"
+outpath = "public"
 rootdir = "."
 deploypath = "https://situx.github.io/public/"
 
