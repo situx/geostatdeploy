@@ -198,12 +198,12 @@ for file in os.listdir(rootdir):
             {"href": deploypath + "/collections/" + fileid + "/items/index.json", "rel": "items","type": "application/json", "title": "Collection as JSON"},
             {"href": deploypath + "/collections/" + fileid+"/items/indexc.html" , "rel": "items", "type": "text/html","title": "Collection as HTML"},
             {"href": deploypath + "/collections/" + fileid + "/items/index.ttl", "rel": "items", "type": "text/ttl","title": "Collection as TTL"}
-        ], "itemType": "feature", "extent": {"spatial": {"bbox": [gdfbbox[0], gdfbbox[2], gdfbbox[1], gdfbbox[3]], "crs":formatCRS(str(gdf.crs))}},"crs":formatCRS(str(gdf.crs))}
+        ], "itemType": "feature", "extent": {"spatial": {"bbox": [gdfbbox[0], gdfbbox[2], gdfbbox[1], gdfbbox[3]], "crs":formatCRS(str(gdf.crs))}},"crs":[formatCRS(str(gdf.crs))]}
         collectionsjson["collections"].append({"id": fileid,"title": fileid, "links": [{"href": deploypath + "/collections/" + fileid + "/index.json", "rel": "collection",
              "type": "application/json", "title": "Collection as JSON"},
             {"href": deploypath + "/collections/" + fileid+"/indexc.html" , "rel": "collection", "type": "text/html","title": "Collection as HTML"},
             {"href": deploypath + "/collections/" + fileid + "/index.ttl", "rel": "collection", "type": "text/ttl","title": "Collection as TTL"}],
-            "extent": {"spatial": {"bbox": [gdfbbox[0], gdfbbox[2], gdfbbox[1], gdfbbox[3]], "crs":formatCRS(str(gdf.crs))}},"crs":formatCRS(str(gdf.crs))})
+            "extent": {"spatial": {"bbox": [gdfbbox[0], gdfbbox[2], gdfbbox[1], gdfbbox[3]], "crs":formatCRS(str(gdf.crs))}},"crs":[formatCRS(str(gdf.crs))]})
         if not os.path.exists(outpath + "/collections/" + fileid):
             os.makedirs(outpath + "/collections/" + fileid)
         with open(outpath + "/collections/" + fileid + "/index.json", 'w', encoding="utf-8") as f:
@@ -222,7 +222,7 @@ for file in os.listdir(rootdir):
             flen=len(res["features"])
             res["numberMatched"]=flen
             res["numberReturned"]=flen
-            res["crs"]=formatCRS(str(gdf.crs))
+            res["crs"]=[formatCRS(str(gdf.crs))]
             #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
             json.dump(rewind(res),f, indent=2)
         with open(outpath + "/collections/" + fileid + "/items/index.html", 'w', encoding="utf-8") as f:
@@ -230,7 +230,7 @@ for file in os.listdir(rootdir):
             flen=len(res["features"])
             res["numberMatched"]=flen
             res["numberReturned"]=flen
-            res["crs"]=formatCRS(str(gdf.crs))
+            res["crs"]=[formatCRS(str(gdf.crs))]
             #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
             json.dump(rewind(res),f, indent=2)
         i = 0
@@ -243,7 +243,7 @@ for file in os.listdir(rootdir):
                 res=json.loads(gdf.iloc[[i]].to_json())["features"][0]
                 res["numberMatched"]=1
                 res["numberReturned"]=1
-                res["crs"]=formatCRS(str(gdf.crs))
+                res["crs"]=[formatCRS(str(gdf.crs))]
                 res["links"]=[{
                     "href": deploypath+"/collections/" + fileid + "/items/" + str(fid),
                     "rel": "self",
@@ -256,7 +256,7 @@ for file in os.listdir(rootdir):
                 res=json.loads(gdf.iloc[[i]].to_json())["features"][0]
                 res["numberMatched"]=1
                 res["numberReturned"]=1
-                res["crs"]=formatCRS(str(gdf.crs))
+                res["crs"]=[formatCRS(str(gdf.crs))]
                 res["links"]=[{
                     "href": deploypath+"/collections/" + fileid + "/items/" + str(fid),
                     "rel": "self",
