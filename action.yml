@@ -1,0 +1,79 @@
+name: 'sparqlunicorn-ontdoc'
+description: 'Generates static OGC API Features deployments from geodata files'
+branding:
+  icon: 'file-text'
+  color: 'blue'
+inputs:
+   inputs:
+      version:
+        required: false
+        type: string
+        description: "The folder of the input data to publish"
+        default: main
+      inputpath:
+        required: false
+        description: "The folder of the input data to publish"
+        default: "."
+        type: string
+      templatedir:
+        required: false
+        description: "The path or URL of the HTML documentation template to use"
+        default: deployscript/resources/html/
+        type: string
+      outpath:
+        required: false
+        description: "The destination file path to publish to"
+        default: None
+        type: string
+      ghpages:
+        required: false
+        description: "Indicates whether to create a deployment to a pages branch"
+        default: true
+        type: boolean
+      ghpagesbranch:
+        required: false
+        description: "The branch to deploy to"
+        default: gh-pages
+        type: string
+      ghpagesfolder:
+        required: false
+        description: "The folder which is used for the pages deployment"
+        default: /
+        type: string
+runs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        if: ${{ inputs.checkout }}
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+      - name: Checkout tools repo
+        id: checkout_tools
+        uses: actions/checkout@v3
+        continue-on-error: true
+        with:
+          repository: situx/geostatdeploy
+          ref: "${{inputs.version}}"
+          path: deployscript
+      - name: Checkout tools repo fallback
+        if: steps.checkout_tools.outcome != 'success'
+        uses: actions/checkout@v3
+        with:
+          repository: situx/geostatdeploy
+          ref: "main"
+          path: deployscript    
+      - name: Generate OGC API Features Deployment
+        run: |
+          sudo apt-get install python3 python3-setuptools python3-pip python3-dev  -y
+          sudo pip3 install rdflib geopandas geodatasets geojson_rewind
+          python3 deployscript/src/geostatdeploy.py --input "${{inputs.inputpath}}" --output "${{inputs.outpath}}" --deploypath "https://${{github.repository_owner}}.github.io/${{ github.event.repository.name }}" --templatepath "${{inputs.templatedir}}"  
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        if: ${{ inputs.ghpages }}
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{inputs.ghpagesbranch}}
+          FOLDER: ${{inputs.docpath}}/
+          clean: false
+          TARGET-FOLDER: ${{inputs.ghpagesfolder}}
