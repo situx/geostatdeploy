@@ -210,7 +210,7 @@ for file in os.listdir(rootdir):
             json.dump(curcoll, f, indent=2)
         with open(outpath + "/collections/" + fileid + "/index.html", 'w', encoding="utf-8") as f:
             json.dump(curcoll, f, indent=2)
-        curcolhtml = collectiontabletemp + "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"" + fileid + "/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"" + fileid + "/index.json/\">[Collection as JSON]</a></td></tr>"
+        curcolhtml = collectiontabletemp + "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"" + fileid + "/items/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"" + fileid + "/items/index.json/\">[Collection as JSON]</a></td></tr>"
         with open(outpath + "/collections/" + fileid + "/indexc.html", 'w', encoding="utf-8") as f:
             f.write(collectionshtml.replace("{{collectiontable}}", curcolhtml))
         geodict = gdf.to_geo_dict()
