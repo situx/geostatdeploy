@@ -1,4 +1,4 @@
-name: 'sparqlunicorn-ontdoc'
+name: 'geostatdeploy'
 description: 'Generates static OGC API Features deployments from geodata files'
 branding:
   icon: 'file-text'
@@ -76,4 +76,5 @@ runs:
           BRANCH: ${{inputs.ghpagesbranch}}
           FOLDER: ${{inputs.docpath}}/
           clean: false
+
           TARGET-FOLDER: ${{inputs.ghpagesfolder}}
