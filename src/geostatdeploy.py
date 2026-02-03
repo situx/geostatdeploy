@@ -48,7 +48,7 @@ def createFolders(outpath):
 
 
 
-
+indexhtml="<html><head><title>Indexpage</title></head><body><h3>Static OGC API Features</h3>This is the landing page of this static OGC API features service.<ul><li><a href=\"api/api.html\">API as HTML</a></li><li><a href=\"collections/indexc.html\">Collections</li><li><a href=\"conformance/index.html\">Conformance</a></li></ul></body></html>"
 collectionsjson = {"collections": [], "links": [
     {"href": deploypath + "/collections/index.json", "rel": "self", "type": "application/json",
      "title": "this document as JSON"},
@@ -275,6 +275,9 @@ with open(outpath + "/collections/index.json", 'w', encoding="utf-8") as f:
 
 with open(outpath + "/collections/index.html", 'w', encoding="utf-8") as f:
     json.dump(collectionsjson, f, indent=2)
+
+with open(outpath + "/index.html", 'w', encoding="utf-8") as f:
+    f.write(indexhtml)
 
 with open(outpath + "/collections/indexc.html", 'w', encoding="utf-8") as f:
     f.write(collectionshtml.replace("{{collectiontable}}", collectiontable))
