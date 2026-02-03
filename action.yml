@@ -8,7 +8,7 @@ inputs:
       version:
         required: false
         type: string
-        description: "The folder of the input data to publish"
+        description: "The version string of the script"
         default: main
       inputpath:
         required: false
@@ -78,3 +78,4 @@ runs:
           clean: false
 
           TARGET-FOLDER: ${{inputs.ghpagesfolder}}
+
