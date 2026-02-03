@@ -235,9 +235,11 @@ for file in os.listdir(rootdir):
             json.dump(rewind(res),f, indent=2)
         with open(outpath + "/collections/" + fileid + "/items/indexc.html", 'w', encoding="utf-8") as f:
             f.write("<html><head><title>"+str(fileid)+" Features</title></head><body><h3>Features of "+str(fileid)+"</h3><ul>")
+            i=0
             for row in gdf.itertuples():
                 fid = gdf.iloc[[i]].to_geo_dict()["features"][0]["id"]
                 f.write("<li><a href=\""+outpath + "/collections/" + fileid + "/items/"+fid+"/indexc.html\">"+str(fid)+"</a></li>")
+                i+=1
             f.write("</ul></body></html>")
         i = 0
         outdict={"type":"Collection","features":[]}
