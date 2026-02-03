@@ -238,7 +238,7 @@ for file in os.listdir(rootdir):
             i=0
             for row in gdf.itertuples():
                 fid = gdf.iloc[[i]].to_geo_dict()["features"][0]["id"]
-                f.write("<li><a href=\""+outpath + "/collections/" + fileid + "/items/"+fid+"/indexc.html\">"+str(fid)+"</a></li>")
+                f.write("<li><a href=\""+fid+"/indexc.html\">"+str(fid)+"</a></li>")
                 i+=1
             f.write("</ul></body></html>")
         i = 0
