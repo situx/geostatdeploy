@@ -212,6 +212,7 @@ for file in os.listdir(rootdir):
             json.dump(curcoll, f, indent=2)
         curcolhtml = collectiontabletemp + "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"items/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"items/index.json/\">[Collection as JSON]</a></td></tr>"
         with open(outpath + "/collections/" + fileid + "/indexc.html", 'w', encoding="utf-8") as f:
+            f.write("<html><head><title>Colletion: "+str(fid)+"</title></head><body><h3>Collection: "+str()+"</h3><div id=\"map\" style=\"width:500px;height:500px\"></div>")
             f.write(collectionshtml.replace("{{collectiontable}}", curcolhtml))
         geodict = gdf.to_geo_dict()
         collectiontable += "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"" + fileid + "/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"" + fileid + "/index.json/\">[Collection as JSON]</a></td></tr>"
@@ -275,7 +276,9 @@ for file in os.listdir(rootdir):
                 json.dump(rewind(res),f, indent=2)
                 #print(gdf.iloc[[i]].to_geo_dict()["features"][0])
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/indexc.html", 'w',encoding="utf-8") as f:
+                f.write("<html><head><title>"+str(fid)+"</title></head><body><div id=\"map\" style=\"width:500px;height:500px\"></div>")
                 f.write(gdf.iloc[[i]].to_html())
+                f.write("</body></html>")
             i += 1
 collectiontable += "</tbody></table>"
 with open(outpath + "/collections/index.json", 'w', encoding="utf-8") as f:
