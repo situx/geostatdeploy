@@ -317,10 +317,13 @@ for file in os.listdir(rootdir):
             json.dump(curcoll, f, indent=2)
         with open(outpath + "/collections/" + fileid + "/index.html", 'w', encoding="utf-8") as f:
             json.dump(curcoll, f, indent=2)
+        with open(outpath + "/collections/" + fileid + "/index.js", 'w', encoding="utf-8") as f:
+            thegjson={type:"Feature",name:str(fileid)+" BBOX",properties:{},geometry:{type:"Polygon",coordinates:[[[curcoll["extent"]["spatial"]["bbox"][0],curcoll["extent"]["spatial"]["bbox"][1]] [curcoll["extent"]["spatial"]["bbox"][3],curcoll["extent"]["spatial"]["bbox"][1]] [curcoll["extent"]["spatial"]["bbox"][3],curcoll["extent"]["spatial"]["bbox"][2]] [curcoll["extent"]["spatial"]["bbox"][1],curcoll["extent"]["spatial"]["bbox"][3]] [curcoll["extent"]["spatial"]["bbox"][0],curcoll["extent"]["spatial"]["bbox"][1]] ]]}}
+            f.write("var features="+json.dumps(thegjson,indent=2))
         curcolhtml = collectiontabletemp + "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"items/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"items/index.json/\">[Collection as JSON]</a></td></tr>"
         with open(outpath + "/collections/" + fileid + "/indexc.html", 'w', encoding="utf-8") as f:
             breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../\">Home</a></li><li><a href=\"../indexc.html\">Collections</a></li><li>"+fileid+"</li></ul>"""
-            f.write(htmlheader.replace("{{title}}","Collection: "+str(fileid)).replace("{{breadcrumb}}",breadcrumb).replace("<div id=\"map\"","<div id=\"nomap\""))
+            f.write(htmlheader.replace("{{title}}","Collection: "+str(fileid)).replace("{{breadcrumb}}",breadcrumb))
             f.write("<ul><li><a href=\"items/indexc.html\">Details</a></li></ul>")
             f.write(htmlfooter.replace("{{footercontent}}",""))
         geodict = gdf.to_geo_dict()
