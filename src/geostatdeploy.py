@@ -332,13 +332,7 @@ for file in os.listdir(rootdir):
         with open(outpath + "/collections/" + fileid + "/items/indexc.html", 'w', encoding="utf-8") as f:
             breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../\">Home</a></li><li><a href=\"../../indexc.html\">Collections</a></li><li><a href=\"../indexc.html\">"+fileid+"</a></li><li>Items</li></ul>"""
             f.write(htmlheader.replace("{{title}}",str(fileid)+" Features").replace("{{breadcrumb}}",breadcrumb))
-            f.write("<ul>")
-            i=0
-            for row in gdf.itertuples():
-                fid = gdf.iloc[[i]].to_geo_dict()["features"][0]["id"]
-                f.write("<li><a href=\""+fid+"/indexc.html\">"+str(fid)+"</a></li>")
-                i+=1
-            f.write("</ul>")
+            f.write(gdf.to_html())
             f.write(htmlfooter.replace("{{footercontent}}",""))
             f.write("</body></html>")
         i = 0
