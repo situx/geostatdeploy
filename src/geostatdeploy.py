@@ -267,6 +267,7 @@ with open(outpath + "/conformance/index.html", 'w', encoding="utf-8") as f:
 
 with open(outpath + "/conformance/indexc.html", 'w', encoding="utf-8") as f:
     f.write(htmlheader.replace("{{title}}","Conformance").replace("id=\"map\"","id=\"nomap\" style=\"visibility:none\"").replace("{{breadcrumb}}","<ul class=\"breadcrumb\"><li><a href=\"../\">Home</a></li><li>Conformance</li></ul>"))
+    f.write("<ul><li><a href=\"http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/core\">Core</a></li><li><a href=\"http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/html\">HTML</a></li><li><a href=\"http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/oas30\">OAS30</a></li><li><a href=\"http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/geojson\">GeoJSON</a></li></ul>")
     f.write(htmlfooter.replace("{{footercontent}}",""))
 
 with open(outpath + "/index.json", 'w', encoding="utf-8") as f:
