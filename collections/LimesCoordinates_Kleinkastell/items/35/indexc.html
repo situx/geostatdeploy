@@ -81,13 +81,13 @@ function generateLeafletPopup(feature, layer){
 }
 if (document.getElementById("map")){
     const map = L.map('map').setView([51.505, -0.09], 13);
-
     const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
-    L.geoJSON(features, {
+    featLayer=L.geoJSON(features, {
         onEachFeature: function (feature, layer) {layer.bindPopup(generateLeafletPopup(feature, layer))}
     }).addTo(map);
+    map.fitBounds(featLayer.getBounds());
 }</script>
 </body></html>
