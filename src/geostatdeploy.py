@@ -30,9 +30,9 @@ htmlfooter="""
 function generateLeafletPopup(feature, layer){
     var popup="<b>"
     if("name" in feature && feature.name!=""){
-        popup+="<a href=\\""+rewriteLink(feature.id)+"\\" class=\\"footeruri\\" target=\\"_blank\\">"+feature.name+"</a></b><br/><ul>"
+        popup+="<a href=\\""+feature.id+"\\" class=\\"footeruri\\" target=\\"_blank\\">"+feature.name+"</a></b><br/><ul>"
     }else{
-        popup+="<a href=\\""+rewriteLink(feature.id)+"\\" class=\\"footeruri\\" target=\\"_blank\\">"+feature.id.substring(feature.id.lastIndexOf('/')+1)+"</a></b><br/><ul>"
+        popup+="<a href=\\""+feature.id+"\\" class=\\"footeruri\\" target=\\"_blank\\">"+feature.id+"</a></b><br/><ul>"
     }
     for(prop in feature.properties){
         popup+="<li>"
@@ -55,7 +55,7 @@ function generateLeafletPopup(feature, layer){
             }
             popup+="</ul>"
         }else if(Array.isArray(feature.properties[prop]) && (feature.properties[prop][0]+"").startsWith("http")){
-            popup+="<a href=\\""+rewriteLink(feature.properties[prop][0])+"\\" target=\\"_blank\\">"+feature.properties[prop][0].substring(feature.properties[prop][0].lastIndexOf('/')+1)+"</a>"
+            popup+="<a href=\\""+feature.properties[prop][0]fixe+"\\" target=\\"_blank\\">"+feature.properties[prop][0].substring(feature.properties[prop][0].lastIndexOf('/')+1)+"</a>"
         }else{
             popup+=feature.properties[prop]+""
         }
@@ -63,41 +63,6 @@ function generateLeafletPopup(feature, layer){
     }
     popup+="</ul>"
     return popup
-}
-function rewriteLink(thelink){
-    if(thelink==null){
-        rest=search[document.getElementById('search').value].replace(baseurl,"")
-    }else{
-        curlocpath=window.location.href.replace(baseurl,"")
-        rest=thelink.replace(baseurl,"")
-    }
-    if(!(rest.endsWith("/")) && !(rest.endsWith(".html"))){
-        rest+="/"
-    }
-    count=0
-    if(!indexpage){
-        count=rest.split("/").length-1
-    }
-    console.log(count)
-    counter=0
-    if (typeof relativedepth !== 'undefined'){
-        while(counter<relativedepth){
-            rest="../"+rest
-            counter+=1
-        }
-    }else{
-        while(counter<count){
-            rest="../"+rest
-            counter+=1
-        }
-    }
-    //console.log(rest)
-    //console.log(rest.endsWith("index.html"))
-	if(!rest.includes("nonns_") && !rest.endsWith(".html")){
-		rest+="index.html"
-	}
-    console.log(rest)
-    return rest
 }
 if (document.getElementById("map")){
     const map = L.map('map').setView([51.505, -0.09], 13);
