@@ -9,7 +9,7 @@ As a test you may try to incorporate the test dataset represented in this reposi
 
 https://situx.github.io/geostatdeploy/index.json
 
-## Why and when to use geostatdeploy
+## Why and when to use geostatdeploy 
 
 * You are unable to host an OGC API Features service but you have access to a webspace
 * You want to give access to a specific dataset you created to people in a GIS environment using a simple URL
