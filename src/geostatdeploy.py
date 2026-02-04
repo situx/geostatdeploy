@@ -6,6 +6,73 @@ import json
 import os
 
 
+htmlheader="""<html><head><title>{{title}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+<script src="index.js">
+</script>
+</head>
+<body>
+<header>
+<h3>{{title}}</h3>
+</header>
+<div id="map" style="width:500px;height:500px"></div>")
+"""
+
+htmlfooter="""
+<footer>{{footercontent}}
+</footer><script>
+function generateLeafletPopup(feature, layer){
+    var popup="<b>"
+    if("name" in feature && feature.name!=""){
+        popup+="<a href=\""+rewriteLink(feature.id)+"\" class=\"footeruri\" target=\"_blank\">"+feature.name+"</a></b><br/><ul>"
+    }else{
+        popup+="<a href=\""+rewriteLink(feature.id)+"\" class=\"footeruri\" target=\"_blank\">"+feature.id.substring(feature.id.lastIndexOf('/')+1)+"</a></b><br/><ul>"
+    }
+    for(prop in feature.properties){
+        popup+="<li>"
+        if(prop.startsWith("http")){
+            popup+="<a href=\""+prop+"\" target=\"_blank\">"+prop.substring(prop.lastIndexOf('/')+1)+"</a>"
+        }else{
+            popup+=prop
+        }
+        popup+=" : "
+        if(Array.isArray(feature.properties[prop]) && feature.properties[prop].length>1){
+            popup+="<ul>"
+            for(item of feature.properties[prop]){
+                popup+="<li>"
+                if((item+"").startsWith("http")){
+                    popup+="<a href=\""+item+"\" target=\"_blank\">"+item.substring(item.lastIndexOf('/')+1)+"</a>"
+                }else{
+                    popup+=item
+                }
+                popup+="</li>"
+            }
+            popup+="</ul>"
+        }else if(Array.isArray(feature.properties[prop]) && (feature.properties[prop][0]+"").startsWith("http")){
+            popup+="<a href=\""+rewriteLink(feature.properties[prop][0])+"\" target=\"_blank\">"+feature.properties[prop][0].substring(feature.properties[prop][0].lastIndexOf('/')+1)+"</a>"
+        }else{
+            popup+=feature.properties[prop]+""
+        }
+        popup+="</li>"
+    }
+    popup+="</ul>"
+    return popup
+}
+if (document.getElementById("map")){
+    const map = L.map('map').setView([51.505, -0.09], 13);
+
+    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    L.geoJSON(features, {
+        onEachFeature: function (feature, layer) {layer.bindPopup(generateLeafletPopup(feature, layer))}})
+    }).addTo(map);
+}</script>
+"""
 
 parser=argparse.ArgumentParser()
 parser.add_argument("-i","--input",nargs='*',help="the input directory to parse for geo files",action="store",required=False,default=".")
@@ -212,7 +279,7 @@ for file in os.listdir(rootdir):
             json.dump(curcoll, f, indent=2)
         curcolhtml = collectiontabletemp + "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"items/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"items/index.json/\">[Collection as JSON]</a></td></tr>"
         with open(outpath + "/collections/" + fileid + "/indexc.html", 'w', encoding="utf-8") as f:
-            f.write("<html><head><title>Colletion: "+str(fileid)+"</title></head><body><h3>Collection: "+str(fileid)+"</h3><div id=\"map\" style=\"width:500px;height:500px\"></div>")
+            f.write("<html><head><title>Collection: "+str(fileid)+"</title></head><body><h3>Collection: "+str(fileid)+"</h3><div id=\"map\" style=\"width:500px;height:500px\"></div>")
             f.write(collectionshtml.replace("{{collectiontable}}", curcolhtml))
         geodict = gdf.to_geo_dict()
         collectiontable += "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"" + fileid + "/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"" + fileid + "/index.json/\">[Collection as JSON]</a></td></tr>"
@@ -226,6 +293,14 @@ for file in os.listdir(rootdir):
             res["crs"]=[formatCRS(str(gdf.crs))]
             #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
             json.dump(rewind(res),f, indent=2)
+        with open(outpath + "/collections/" + fileid + "/items/index.js", 'w', encoding="utf-8") as f:
+            res=json.loads(gdf.to_json())
+            flen=len(res["features"])
+            res["numberMatched"]=flen
+            res["numberReturned"]=flen
+            res["crs"]=[formatCRS(str(gdf.crs))]
+            #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
+            f.write("var features="+json.dumps(rewind(res), indent=2)
         with open(outpath + "/collections/" + fileid + "/items/index.html", 'w', encoding="utf-8") as f:
             res=json.loads(gdf.to_json())
             flen=len(res["features"])
@@ -261,6 +336,19 @@ for file in os.listdir(rootdir):
                 }]
                 #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
                 json.dump(rewind(res),f, indent=2)
+            with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/index.js", 'w',encoding="utf-8") as f:
+                res=json.loads(gdf.iloc[[i]].to_json())["features"][0]
+                res["numberMatched"]=1
+                res["numberReturned"]=1
+                res["crs"]=[formatCRS(str(gdf.crs))]
+                res["links"]=[{
+                    "href": deploypath+"/collections/" + fileid + "/items/" + str(fid),
+                    "rel": "self",
+                    "type": "application/json",
+                    "title": "this document as JS"
+                }]
+                #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
+                f.write("var features="+json.dumps(rewind(res), indent=2)
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/index.html", 'w',encoding="utf-8") as f:
                 res=json.loads(gdf.iloc[[i]].to_json())["features"][0]
                 res["numberMatched"]=1
@@ -276,8 +364,9 @@ for file in os.listdir(rootdir):
                 json.dump(rewind(res),f, indent=2)
                 #print(gdf.iloc[[i]].to_geo_dict()["features"][0])
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/indexc.html", 'w',encoding="utf-8") as f:
-                f.write("<html><head><title>"+str(fid)+"</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"><script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script></head><body><header><h3>"+str(fid)+"</h3></header><div id=\"map\" style=\"width:500px;height:500px\"></div>")
+                f.write(htmlheader.replace("{{title}}",fid))
                 f.write(gdf.iloc[[i]].to_html())
+                f.write(htmlfooter.replace("{{footercontent}}",""))
                 f.write("</body></html>")
             i += 1
 collectiontable += "</tbody></table>"
