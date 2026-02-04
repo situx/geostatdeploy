@@ -300,7 +300,7 @@ for file in os.listdir(rootdir):
             res["numberReturned"]=flen
             res["crs"]=[formatCRS(str(gdf.crs))]
             #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
-            f.write("var features="+json.dumps(rewind(res), indent=2)
+            f.write("var features="+json.dumps(rewind(res), indent=2))
         with open(outpath + "/collections/" + fileid + "/items/index.html", 'w', encoding="utf-8") as f:
             res=json.loads(gdf.to_json())
             flen=len(res["features"])
@@ -348,7 +348,7 @@ for file in os.listdir(rootdir):
                     "title": "this document as JS"
                 }]
                 #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
-                f.write("var features="+json.dumps(rewind(res), indent=2)
+                f.write("var features="+json.dumps(rewind(res), indent=2))
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/index.html", 'w',encoding="utf-8") as f:
                 res=json.loads(gdf.iloc[[i]].to_json())["features"][0]
                 res["numberMatched"]=1
