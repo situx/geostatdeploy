@@ -326,7 +326,7 @@ for file in os.listdir(rootdir):
         with open(outpath + "/collections/" + fileid + "/items/index.html", 'w', encoding="utf-8") as f:
             json.dump(rewind(res),f, indent=2)
         with open(outpath + "/collections/" + fileid + "/items/indexc.html", 'w', encoding="utf-8") as f:
-            breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../\">Home</a></li><li><a href=\"../../\">Collections</a></li><li><a href=\"../\">"+fileid+"</a></li><li>Items</li></ul>"""
+            breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../\">Home</a></li><li><a href=\"../../indexc.html\">Collections</a></li><li><a href=\"../indexc.html\">"+fileid+"</a></li><li>Items</li></ul>"""
             f.write(htmlheader.replace("{{title}}",str(fileid)+" Features").replace("{{breadcrumb}}",breadcrumb))
             f.write("<ul>")
             i=0
@@ -372,7 +372,7 @@ for file in os.listdir(rootdir):
                 }]
                 json.dump(rewind(res),f, indent=2)
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/indexc.html", 'w',encoding="utf-8") as f:
-                breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../../\">Home</a></li><li><a href=\"../../../\">Collections</a></li><li><a href=\"../../\">"+fileid+"</a></li><li><a href=\"../\">Items</a></li><li>"+str(fid)+"</li></ul>"""
+                breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../../\">Home</a></li><li><a href=\"../../../indexc.html\">Collections</a></li><li><a href=\"../../indexc.html\">"+fileid+"</a></li><li><a href=\"../indexc.html\">Items</a></li><li>"+str(fid)+"</li></ul>"""
                 f.write(htmlheader.replace("{{title}}",fid).replace("{{breadcrumb}}",breadcrumb))
                 f.write(gdf.iloc[[i]].to_html())
                 f.write(htmlfooter.replace("{{footercontent}}",""))
