@@ -350,15 +350,16 @@ for file in os.listdir(rootdir):
         with open(outpath + "/collections/" + fileid + "/items/indexc.html", 'w', encoding="utf-8") as f:
             breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../\">Home</a></li><li><a href=\"../../indexc.html\">Collections</a></li><li><a href=\"../indexc.html\">"+fileid+"</a></li><li>Items</li></ul>"""
             f.write(htmlheader.replace("{{title}}",str(fileid)+" Features").replace("{{breadcrumb}}",breadcrumb))
-            f.write("<table id=\"feattable\"><th>ID</th>")
+            f.write("<table id=\"feattable\"><thead><th>ID</th>")
             for prop in geodict["features"][0]["properties"]:
                 f.write("<th>"+str(prop)+"</th>")
-            f.write("</tr>")
+            f.write("</tr></thead><tbody>")
             for feat in geodict["features"]:
-                f.write("<tr><td><a href=\""+str(feat["id"])+"\">"+str(feat["id"])+"</a></td>")
+                f.write("<tr><td><a href=\""+str(feat["id"])+"/indexc.html\">"+str(feat["id"])+"</a></td>")
                 for prop in feat["properties"]:
                     f.write("<td>"+str(feat["properties"][prop])+"</td>")
-            f.write("</table>")    
+                f.write("</tr>")
+            f.write("</tbody></table>")    
             #f.write(gdf.to_html().replace("<table ","<table id=\"feattable\" "))
             f.write(htmlfooter.replace("{{footercontent}}",""))
             f.write("</body></html>")
