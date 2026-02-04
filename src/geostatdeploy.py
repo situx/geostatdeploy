@@ -43,8 +43,8 @@ ul.breadcrumb li a:hover {
 </head>
 <body>
 <header>
-{{breadcrumb}}
 <h3>{{title}}</h3>
+{{breadcrumb}}
 </header>
 <div id="map" style="height:500px;z-index: 0;"></div>
 """
