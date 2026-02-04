@@ -8,6 +8,7 @@ import os
 
 htmlheader="""<html><head><title>{{title}}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.css" />
 <script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
@@ -160,7 +161,7 @@ collectionsjson = {"collections": [], "links": [
      "title": "this document as JSON"},
     {"href": deploypath + "/collections/indexc.html", "rel": "alternate", "type": "text/html",
      "title": "this document as HTML"}]}
-collectionshtml = "<html><head></head><body><header><h1>Collections of " + str(deploypath) + "</h1></head>{{collectiontable}}<footer><a href=\"index.json\">This page as JSON</a></footer></body></html>"
+collectionshtml = htmlheader.replace("{{title}}","Collections of " + str(deploypath))+"{{collectiontable}}"+htmlfooter.replace("{{footercontent}}","")+"</body></html>"
 collectiontable = "<table><thead><th>Collection</th><th>Links</th></thead><tbody>"
 collectiontabletemp = "<table><thead><th>Collection</th><th>Links</th></thead><tbody>"
 
