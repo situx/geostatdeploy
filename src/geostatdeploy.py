@@ -21,7 +21,7 @@ htmlheader="""<html><head><title>{{title}}</title>
 <header>
 <h3>{{title}}</h3>
 </header>
-<div id="map" style="width:500px;height:500px"></div>")
+<div id="map" style="height:500px;z-index: 0;"></div>")
 """
 
 htmlfooter="""
@@ -317,46 +317,34 @@ for file in os.listdir(rootdir):
             fid = gdf.iloc[[i]].to_geo_dict()["features"][0]["id"]
             if not os.path.exists(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/"):
                 os.makedirs(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/")
+            res=json.loads(gdf.iloc[[i]].to_json())["features"][0]
+            res["numberMatched"]=1
+            res["numberReturned"]=1
+            res["crs"]=[formatCRS(str(gdf.crs))]
+            res["links"]=[{
+                "href": deploypath+"/collections/" + fileid + "/items/" + str(fid),
+                "rel": "self",
+                "type": "application/json",
+                "title": "this document as JSON"
+            }]
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/index.json", 'w',encoding="utf-8") as f:
-                res=json.loads(gdf.iloc[[i]].to_json())["features"][0]
-                res["numberMatched"]=1
-                res["numberReturned"]=1
-                res["crs"]=[formatCRS(str(gdf.crs))]
-                res["links"]=[{
-                    "href": deploypath+"/collections/" + fileid + "/items/" + str(fid),
-                    "rel": "self",
-                    "type": "application/json",
-                    "title": "this document as JSON"
-                }]
-                #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
                 json.dump(rewind(res),f, indent=2)
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/index.js", 'w',encoding="utf-8") as f:
-                res=json.loads(gdf.iloc[[i]].to_json())["features"][0]
-                res["numberMatched"]=1
-                res["numberReturned"]=1
-                res["crs"]=[formatCRS(str(gdf.crs))]
                 res["links"]=[{
                     "href": deploypath+"/collections/" + fileid + "/items/" + str(fid),
                     "rel": "self",
                     "type": "application/json",
                     "title": "this document as JS"
                 }]
-                #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
                 f.write("var features="+json.dumps(rewind(res), indent=2))
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/index.html", 'w',encoding="utf-8") as f:
-                res=json.loads(gdf.iloc[[i]].to_json())["features"][0]
-                res["numberMatched"]=1
-                res["numberReturned"]=1
-                res["crs"]=[formatCRS(str(gdf.crs))]
                 res["links"]=[{
                     "href": deploypath+"/collections/" + fileid + "/items/" + str(fid),
                     "rel": "self",
                     "type": "application/json",
                     "title": "this document as JSON"
                 }]
-                #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
                 json.dump(rewind(res),f, indent=2)
-                #print(gdf.iloc[[i]].to_geo_dict()["features"][0])
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/indexc.html", 'w',encoding="utf-8") as f:
                 f.write(htmlheader.replace("{{title}}",fid))
                 f.write(gdf.iloc[[i]].to_html())
