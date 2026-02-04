@@ -69,7 +69,7 @@ if (document.getElementById("map")){
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
     L.geoJSON(features, {
-        onEachFeature: function (feature, layer) {layer.bindPopup(generateLeafletPopup(feature, layer))}})
+        onEachFeature: function (feature, layer) {layer.bindPopup(generateLeafletPopup(feature, layer))}
     }).addTo(map);
 }</script>
 """
