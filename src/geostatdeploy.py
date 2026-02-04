@@ -276,7 +276,7 @@ for file in os.listdir(rootdir):
                 json.dump(rewind(res),f, indent=2)
                 #print(gdf.iloc[[i]].to_geo_dict()["features"][0])
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/indexc.html", 'w',encoding="utf-8") as f:
-                f.write("<html><head><title>"+str(fid)+"</title></head><body><div id=\"map\" style=\"width:500px;height:500px\"></div>")
+                f.write("<html><head><title>"+str(fid)+"</title></head><body><header><h3>"+str(fid)+"</h3></header><div id=\"map\" style=\"width:500px;height:500px\"></div>")
                 f.write(gdf.iloc[[i]].to_html())
                 f.write("</body></html>")
             i += 1
