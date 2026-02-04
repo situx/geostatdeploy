@@ -161,7 +161,7 @@ collectionsjson = {"collections": [], "links": [
      "title": "this document as JSON"},
     {"href": deploypath + "/collections/indexc.html", "rel": "alternate", "type": "text/html",
      "title": "this document as HTML"}]}
-collectionshtml = htmlheader.replace("{{title}}","Collections of " + str(deploypath))+"{{collectiontable}}"+htmlfooter.replace("{{footercontent}}","")+"</body></html>"
+collectionshtml = htmlheader.replace("{{title}}","Collections of " + str(deploypath))+"{{collectiontable}}"+htmlfooter.replace("{{footercontent}}","").replace("id=\"map\"","id=\"nomap\"")+"</body></html>"
 collectiontable = "<table><thead><th>Collection</th><th>Links</th></thead><tbody>"
 collectiontabletemp = "<table><thead><th>Collection</th><th>Links</th></thead><tbody>"
 
