@@ -315,12 +315,14 @@ for file in os.listdir(rootdir):
             os.makedirs(outpath + "/collections/" + fileid)
         with open(outpath + "/collections/" + fileid + "/index.json", 'w', encoding="utf-8") as f:
             json.dump(curcoll, f, indent=2)
+        with open(outpath + "/collections/" + fileid + "/index.js", 'w', encoding="utf-8") as f:
+            f.write("var features="+json.dumps(curcoll, indent=2))
         with open(outpath + "/collections/" + fileid + "/index.html", 'w', encoding="utf-8") as f:
             json.dump(curcoll, f, indent=2)
         curcolhtml = collectiontabletemp + "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"items/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"items/index.json/\">[Collection as JSON]</a></td></tr>"
         with open(outpath + "/collections/" + fileid + "/indexc.html", 'w', encoding="utf-8") as f:
             f.write(htmlheader.replace("{{title}}","Collection: "+str(fileid)))
-            f.write(collectionshtml.replace("{{collectiontable}}", curcolhtml))
+            f.write("<ul><li><a href=\"items/indexc.html\">Details</a></li></ul>")
             f.write(htmlfooter.replace("{{footercontent}}",""))
         geodict = gdf.to_geo_dict()
         collectiontable += "<tr><td><a href=\"" + fileid + "/indexc.html\">" + fileid + "</a></td><td><a href=\"" + fileid + "/index.json/\">[Collection as JSON]</a></td></tr>"
