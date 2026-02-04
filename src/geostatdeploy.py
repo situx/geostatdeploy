@@ -351,7 +351,7 @@ for file in os.listdir(rootdir):
             breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../\">Home</a></li><li><a href=\"../../indexc.html\">Collections</a></li><li><a href=\"../indexc.html\">"+fileid+"</a></li><li>Items</li></ul>"""
             f.write(htmlheader.replace("{{title}}",str(fileid)+" Features").replace("{{breadcrumb}}",breadcrumb))
             f.write("<table id=\"feattable\"><th>ID</th>")
-            for prop geodict["features"][0]["properties"]:
+            for prop in geodict["features"][0]["properties"]:
                 f.write("<th>"+str(prop)+"</th>")
             f.write("</tr>")
             for feat in geodict["features"]:
