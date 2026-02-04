@@ -1,0 +1,32 @@
+var features={
+  "id": "13",
+  "type": "Feature",
+  "properties": {
+    "fid": 14,
+    "limestownpart": "Nieder-Weisel",
+    "limestown": "Butzbach",
+    "limesobject": "Hunnenkirchhof 1",
+    "ID": 76,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      8.6284,
+      50.414587
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/13",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

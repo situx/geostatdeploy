@@ -1,0 +1,32 @@
+var features={
+  "id": "28",
+  "type": "Feature",
+  "properties": {
+    "fid": 29,
+    "limestownpart": "???",
+    "limestown": "Mainhardt",
+    "limesobject": "Hankertsm\u00fchle",
+    "ID": 91,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      9.571011,
+      49.055125
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/28",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+var features={
+  "id": "40",
+  "type": "Feature",
+  "properties": {
+    "fid": 41,
+    "limestownpart": "Steinsdorf (i), Schambach",
+    "limestown": "Altmannstein",
+    "limesobject": "Hinterer Seeberg",
+    "ID": 103,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      11.572464,
+      48.905277
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/40",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+var features={
+  "id": "7",
+  "type": "Feature",
+  "properties": {
+    "fid": 8,
+    "limestownpart": "Oberstedten",
+    "limestown": "Oberursel",
+    "limesobject": "Altes Jagdhaus",
+    "ID": 70,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      8.492966,
+      50.244586
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/7",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

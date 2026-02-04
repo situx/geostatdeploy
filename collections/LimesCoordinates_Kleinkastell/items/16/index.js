@@ -1,0 +1,32 @@
+var features={
+  "id": "16",
+  "type": "Feature",
+  "properties": {
+    "fid": 17,
+    "limestownpart": "Langenhain-Ziegenberg",
+    "limestown": "Ober-M\u00f6rlen",
+    "limesobject": "Eichkopf",
+    "ID": 79,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      8.640278,
+      50.356513
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/16",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

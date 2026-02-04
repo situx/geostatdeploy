@@ -1,0 +1,32 @@
+var features={
+  "id": "23",
+  "type": "Feature",
+  "properties": {
+    "fid": 24,
+    "limestownpart": "H\u00f6chst",
+    "limestown": "Altenstadt",
+    "limesobject": "Buchkopf",
+    "ID": 86,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      8.961192,
+      50.260375
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/23",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

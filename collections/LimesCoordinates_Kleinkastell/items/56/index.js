@@ -1,0 +1,32 @@
+var features={
+  "id": "56",
+  "type": "Feature",
+  "properties": {
+    "fid": 57,
+    "limestownpart": "Unter-Widdersheim",
+    "limestown": "Nidda",
+    "limesobject": "Unter-Widdersheim",
+    "ID": 119,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      8.908644,
+      50.422543
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/56",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

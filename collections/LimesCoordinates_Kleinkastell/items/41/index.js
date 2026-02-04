@@ -1,0 +1,32 @@
+var features={
+  "id": "41",
+  "type": "Feature",
+  "properties": {
+    "fid": 42,
+    "limestownpart": "???",
+    "limestown": "Rheinbrohl",
+    "limesobject": "Rheinbrohl",
+    "ID": 104,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      7.319315,
+      50.503527
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/41",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

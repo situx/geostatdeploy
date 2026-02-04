@@ -1,4 +1,17 @@
-<html><head><title>49</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script></head><body><header><h3>49</h3></header><div id="map" style="width:500px;height:500px"></div><table border="1" class="dataframe">
+<html><head><title>49</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+<script src="index.js">
+</script>
+</head>
+<body>
+<header>
+<h3>49</h3>
+</header>
+<div id="map" style="width:500px;height:500px"></div>")
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -23,4 +36,55 @@
       <td>POINT (8.65572 50.44352)</td>
     </tr>
   </tbody>
-</table></body></html>
+</table>
+<footer>
+</footer><script>
+function generateLeafletPopup(feature, layer){
+    var popup="<b>"
+    if("name" in feature && feature.name!=""){
+        popup+="<a href=""+rewriteLink(feature.id)+"" class="footeruri" target="_blank">"+feature.name+"</a></b><br/><ul>"
+    }else{
+        popup+="<a href=""+rewriteLink(feature.id)+"" class="footeruri" target="_blank">"+feature.id.substring(feature.id.lastIndexOf('/')+1)+"</a></b><br/><ul>"
+    }
+    for(prop in feature.properties){
+        popup+="<li>"
+        if(prop.startsWith("http")){
+            popup+="<a href=""+prop+"" target="_blank">"+prop.substring(prop.lastIndexOf('/')+1)+"</a>"
+        }else{
+            popup+=prop
+        }
+        popup+=" : "
+        if(Array.isArray(feature.properties[prop]) && feature.properties[prop].length>1){
+            popup+="<ul>"
+            for(item of feature.properties[prop]){
+                popup+="<li>"
+                if((item+"").startsWith("http")){
+                    popup+="<a href=""+item+"" target="_blank">"+item.substring(item.lastIndexOf('/')+1)+"</a>"
+                }else{
+                    popup+=item
+                }
+                popup+="</li>"
+            }
+            popup+="</ul>"
+        }else if(Array.isArray(feature.properties[prop]) && (feature.properties[prop][0]+"").startsWith("http")){
+            popup+="<a href=""+rewriteLink(feature.properties[prop][0])+"" target="_blank">"+feature.properties[prop][0].substring(feature.properties[prop][0].lastIndexOf('/')+1)+"</a>"
+        }else{
+            popup+=feature.properties[prop]+""
+        }
+        popup+="</li>"
+    }
+    popup+="</ul>"
+    return popup
+}
+if (document.getElementById("map")){
+    const map = L.map('map').setView([51.505, -0.09], 13);
+
+    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    L.geoJSON(features, {
+        onEachFeature: function (feature, layer) {layer.bindPopup(generateLeafletPopup(feature, layer))}})
+    }).addTo(map);
+}</script>
+</body></html>

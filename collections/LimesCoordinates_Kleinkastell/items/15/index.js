@@ -1,0 +1,32 @@
+var features={
+  "id": "15",
+  "type": "Feature",
+  "properties": {
+    "fid": 16,
+    "limestownpart": "Ockstadt",
+    "limestown": "Friedberg",
+    "limesobject": "Ockst\u00e4dter Wald",
+    "ID": 78,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      8.638337,
+      50.319621
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/15",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

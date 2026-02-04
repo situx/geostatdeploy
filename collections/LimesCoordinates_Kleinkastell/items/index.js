@@ -1,0 +1,1302 @@
+var features={
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "0",
+      "type": "Feature",
+      "properties": {
+        "fid": 1,
+        "limestownpart": "Heimbach-Weis",
+        "limestown": "Neuwied",
+        "limesobject": "Anhausen",
+        "ID": 63,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.538413,
+          50.481347
+        ]
+      }
+    },
+    {
+      "id": "1",
+      "type": "Feature",
+      "properties": {
+        "fid": 2,
+        "limestownpart": "???",
+        "limestown": "Hillscheid",
+        "limesobject": "Hillscheid",
+        "ID": 64,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.704296,
+          50.412622
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "type": "Feature",
+      "properties": {
+        "fid": 3,
+        "limestownpart": "Oberlahnstein/Becheln",
+        "limestown": "Lahnstein",
+        "limesobject": "Becheln",
+        "ID": 65,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.738396,
+          50.28661
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "type": "Feature",
+      "properties": {
+        "fid": 4,
+        "limestownpart": "???",
+        "limestown": "Miehlen",
+        "limesobject": "Pfarrhofen",
+        "ID": 66,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.890201,
+          50.226566
+        ]
+      }
+    },
+    {
+      "id": "4",
+      "type": "Feature",
+      "properties": {
+        "fid": 5,
+        "limestownpart": "Laufenselden",
+        "limestown": "Heidenrod",
+        "limesobject": "D\u00f6rsterberg",
+        "ID": 67,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.995022,
+          50.197474
+        ]
+      }
+    },
+    {
+      "id": "5",
+      "type": "Feature",
+      "properties": {
+        "fid": 6,
+        "limestownpart": "Lenzhahn/Dasbach",
+        "limestown": "Idstein",
+        "limesobject": "Eichelgarten",
+        "ID": 68,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.316399,
+          50.201068
+        ]
+      }
+    },
+    {
+      "id": "6",
+      "type": "Feature",
+      "properties": {
+        "fid": 7,
+        "limestownpart": "???",
+        "limestown": "Glash\u00fctten",
+        "limesobject": "Maisel",
+        "ID": 69,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.390579,
+          50.218544
+        ]
+      }
+    },
+    {
+      "id": "7",
+      "type": "Feature",
+      "properties": {
+        "fid": 8,
+        "limestownpart": "Oberstedten",
+        "limestown": "Oberursel",
+        "limesobject": "Altes Jagdhaus",
+        "ID": 70,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.492966,
+          50.244586
+        ]
+      }
+    },
+    {
+      "id": "8",
+      "type": "Feature",
+      "properties": {
+        "fid": 9,
+        "limestownpart": "Ober-Eschbach",
+        "limestown": "Bad Homburg",
+        "limesobject": "Heidenstock",
+        "ID": 71,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.512934,
+          50.253706
+        ]
+      }
+    },
+    {
+      "id": "9",
+      "type": "Feature",
+      "properties": {
+        "fid": 10,
+        "limestownpart": "???",
+        "limestown": "Bad Homburg",
+        "limesobject": "Saalburg 1",
+        "ID": 72,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.568471,
+          50.272769
+        ]
+      }
+    },
+    {
+      "id": "10",
+      "type": "Feature",
+      "properties": {
+        "fid": 11,
+        "limestownpart": "???",
+        "limestown": "Bad Homburg",
+        "limesobject": "Saalburg 2",
+        "ID": 73,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.568939,
+          50.27216
+        ]
+      }
+    },
+    {
+      "id": "11",
+      "type": "Feature",
+      "properties": {
+        "fid": 12,
+        "limestownpart": "K\u00f6ppern",
+        "limestown": "Friedrichsdorf",
+        "limesobject": "Lochm\u00fchle",
+        "ID": 74,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.586331,
+          50.28213
+        ]
+      }
+    },
+    {
+      "id": "12",
+      "type": "Feature",
+      "properties": {
+        "fid": 13,
+        "limestownpart": "Nieder-Rosbach",
+        "limestown": "Rosbach",
+        "limesobject": "Rittergr\u00e4ber",
+        "ID": 75,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.62539,
+          50.305565
+        ]
+      }
+    },
+    {
+      "id": "13",
+      "type": "Feature",
+      "properties": {
+        "fid": 14,
+        "limestownpart": "Nieder-Weisel",
+        "limestown": "Butzbach",
+        "limesobject": "Hunnenkirchhof 1",
+        "ID": 76,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.6284,
+          50.414587
+        ]
+      }
+    },
+    {
+      "id": "14",
+      "type": "Feature",
+      "properties": {
+        "fid": 15,
+        "limestownpart": "Nieder-Weisel",
+        "limestown": "Butzbach",
+        "limesobject": "Hunnenkirchhof 2",
+        "ID": 77,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.629062,
+          50.41449
+        ]
+      }
+    },
+    {
+      "id": "15",
+      "type": "Feature",
+      "properties": {
+        "fid": 16,
+        "limestownpart": "Ockstadt",
+        "limestown": "Friedberg",
+        "limesobject": "Ockst\u00e4dter Wald",
+        "ID": 78,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.638337,
+          50.319621
+        ]
+      }
+    },
+    {
+      "id": "16",
+      "type": "Feature",
+      "properties": {
+        "fid": 17,
+        "limestownpart": "Langenhain-Ziegenberg",
+        "limestown": "Ober-M\u00f6rlen",
+        "limesobject": "Eichkopf",
+        "ID": 79,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.640278,
+          50.356513
+        ]
+      }
+    },
+    {
+      "id": "17",
+      "type": "Feature",
+      "properties": {
+        "fid": 18,
+        "limestownpart": "???",
+        "limestown": "Ober-M\u00f6rlen",
+        "limesobject": "Kaisergrube",
+        "ID": 80,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.64676,
+          50.336998
+        ]
+      }
+    },
+    {
+      "id": "18",
+      "type": "Feature",
+      "properties": {
+        "fid": 19,
+        "limestownpart": "???",
+        "limestown": "Butzbach",
+        "limesobject": "Schrenzer",
+        "ID": 81,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.650381,
+          50.432994
+        ]
+      }
+    },
+    {
+      "id": "19",
+      "type": "Feature",
+      "properties": {
+        "fid": 20,
+        "limestownpart": "Gambach",
+        "limestown": "M\u00fcnzenberg",
+        "limesobject": "Dicker Wald 2",
+        "ID": 82,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.67608,
+          50.470322
+        ]
+      }
+    },
+    {
+      "id": "20",
+      "type": "Feature",
+      "properties": {
+        "fid": 21,
+        "limestownpart": "Gambach",
+        "limestown": "M\u00fcnzenberg",
+        "limesobject": "Dicker Wald 1",
+        "ID": 83,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.677771,
+          50.466075
+        ]
+      }
+    },
+    {
+      "id": "21",
+      "type": "Feature",
+      "properties": {
+        "fid": 22,
+        "limestownpart": "Holzheim",
+        "limestown": "Pohlheim",
+        "limesobject": "Holzheimer Unterwald",
+        "ID": 84,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.69936,
+          50.499817
+        ]
+      }
+    },
+    {
+      "id": "22",
+      "type": "Feature",
+      "properties": {
+        "fid": 23,
+        "limestownpart": "Inheiden",
+        "limestown": "Hungen",
+        "limesobject": "Feldheimer Wald",
+        "ID": 85,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.873857,
+          50.471082
+        ]
+      }
+    },
+    {
+      "id": "23",
+      "type": "Feature",
+      "properties": {
+        "fid": 24,
+        "limestownpart": "H\u00f6chst",
+        "limestown": "Altenstadt",
+        "limesobject": "Buchkopf",
+        "ID": 86,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.961192,
+          50.260375
+        ]
+      }
+    },
+    {
+      "id": "24",
+      "type": "Feature",
+      "properties": {
+        "fid": 25,
+        "limestownpart": "Wolfgang",
+        "limestown": "Hanau",
+        "limesobject": "Neuwirtshaus",
+        "ID": 87,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.982996,
+          50.11126
+        ]
+      }
+    },
+    {
+      "id": "25",
+      "type": "Feature",
+      "properties": {
+        "fid": 26,
+        "limestownpart": "Reinhardsachsen",
+        "limestown": "Walld\u00fcrn",
+        "limesobject": "Haselburg",
+        "ID": 88,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.330439,
+          49.633402
+        ]
+      }
+    },
+    {
+      "id": "26",
+      "type": "Feature",
+      "properties": {
+        "fid": 27,
+        "limestownpart": "Hettingen",
+        "limestown": "Buchen",
+        "limesobject": "Rehberg",
+        "ID": 89,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.387543,
+          49.542873
+        ]
+      }
+    },
+    {
+      "id": "27",
+      "type": "Feature",
+      "properties": {
+        "fid": 28,
+        "limestownpart": "???",
+        "limestown": "Osterburken",
+        "limesobject": "Hintere Kalbe",
+        "ID": 90,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.42348,
+          49.449848
+        ]
+      }
+    },
+    {
+      "id": "28",
+      "type": "Feature",
+      "properties": {
+        "fid": 29,
+        "limestownpart": "???",
+        "limestown": "Mainhardt",
+        "limesobject": "Hankertsm\u00fchle",
+        "ID": 91,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.571011,
+          49.055125
+        ]
+      }
+    },
+    {
+      "id": "29",
+      "type": "Feature",
+      "properties": {
+        "fid": 30,
+        "limestownpart": "???",
+        "limestown": "Kaisersbach",
+        "limesobject": "Ebnisee",
+        "ID": 92,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.619291,
+          48.925947
+        ]
+      }
+    },
+    {
+      "id": "30",
+      "type": "Feature",
+      "properties": {
+        "fid": 31,
+        "limestownpart": "???",
+        "limestown": "Welzheim",
+        "limesobject": "R\u00f6telsee",
+        "ID": 93,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.633845,
+          48.88659
+        ]
+      }
+    },
+    {
+      "id": "31",
+      "type": "Feature",
+      "properties": {
+        "fid": 32,
+        "limestownpart": "Gro\u00dfdeinbach",
+        "limestown": "Schw\u00e4bisch Gm\u00fcnd",
+        "limesobject": "Kleindeinbach",
+        "ID": 94,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.754924,
+          48.797321
+        ]
+      }
+    },
+    {
+      "id": "32",
+      "type": "Feature",
+      "properties": {
+        "fid": 33,
+        "limestownpart": "???",
+        "limestown": "Schw\u00e4bisch Gm\u00fcnd",
+        "limesobject": "Freim\u00fchle",
+        "ID": 95,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.763711,
+          48.791553
+        ]
+      }
+    },
+    {
+      "id": "33",
+      "type": "Feature",
+      "properties": {
+        "fid": 34,
+        "limestownpart": "???",
+        "limestown": "Gunzenhausen",
+        "limesobject": "Hinterer Schlossberg",
+        "ID": 96,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.780904,
+          49.116839
+        ]
+      }
+    },
+    {
+      "id": "34",
+      "type": "Feature",
+      "properties": {
+        "fid": 35,
+        "limestownpart": "Sankt Veit, (G\u00fcndersbach)",
+        "limestown": "Pfofeld",
+        "limesobject": "G\u00fcndersbach",
+        "ID": 97,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.951999,
+          49.0865
+        ]
+      }
+    },
+    {
+      "id": "35",
+      "type": "Feature",
+      "properties": {
+        "fid": 36,
+        "limestownpart": "???",
+        "limestown": "Raitenbuch",
+        "limesobject": "Raitenbuch",
+        "ID": 98,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.105936,
+          49.015709
+        ]
+      }
+    },
+    {
+      "id": "36",
+      "type": "Feature",
+      "properties": {
+        "fid": 37,
+        "limestownpart": "Kaldorf",
+        "limestown": "Titting",
+        "limesobject": "Kaldorf",
+        "ID": 99,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.1511,
+          48.983454
+        ]
+      }
+    },
+    {
+      "id": "37",
+      "type": "Feature",
+      "properties": {
+        "fid": 38,
+        "limestownpart": "Altdorf",
+        "limestown": "Titting",
+        "limesobject": "Biebig",
+        "ID": 100,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.265951,
+          48.975256
+        ]
+      }
+    },
+    {
+      "id": "38",
+      "type": "Feature",
+      "properties": {
+        "fid": 39,
+        "limestownpart": "Altdorf",
+        "limestown": "Titting",
+        "limesobject": "Hegelohe",
+        "ID": 101,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.271316,
+          48.975771
+        ]
+      }
+    },
+    {
+      "id": "39",
+      "type": "Feature",
+      "properties": {
+        "fid": 40,
+        "limestownpart": "Schambach",
+        "limestown": "Altmannstein",
+        "limesobject": "G\u00fcssgraben",
+        "ID": 102,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.539056,
+          48.913671
+        ]
+      }
+    },
+    {
+      "id": "40",
+      "type": "Feature",
+      "properties": {
+        "fid": 41,
+        "limestownpart": "Steinsdorf (i), Schambach",
+        "limestown": "Altmannstein",
+        "limesobject": "Hinterer Seeberg",
+        "ID": 103,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.572464,
+          48.905277
+        ]
+      }
+    },
+    {
+      "id": "41",
+      "type": "Feature",
+      "properties": {
+        "fid": 42,
+        "limestownpart": "???",
+        "limestown": "Rheinbrohl",
+        "limesobject": "Rheinbrohl",
+        "ID": 104,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.319315,
+          50.503527
+        ]
+      }
+    },
+    {
+      "id": "42",
+      "type": "Feature",
+      "properties": {
+        "fid": 43,
+        "limestownpart": "???",
+        "limestown": "Weitersburg / H\u00f6hr-Grenzhausen",
+        "limesobject": "Ferbach",
+        "ID": 105,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.65227,
+          50.430389
+        ]
+      }
+    },
+    {
+      "id": "43",
+      "type": "Feature",
+      "properties": {
+        "fid": 44,
+        "limestownpart": "???",
+        "limestown": "Pohl",
+        "limesobject": "Pohl",
+        "ID": 106,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.868022,
+          50.251174
+        ]
+      }
+    },
+    {
+      "id": "44",
+      "type": "Feature",
+      "properties": {
+        "fid": 45,
+        "limestownpart": "Kemel",
+        "limestown": "Heidenrod",
+        "limesobject": "Kemel 2",
+        "ID": 107,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.016199,
+          50.167456
+        ]
+      }
+    },
+    {
+      "id": "45",
+      "type": "Feature",
+      "properties": {
+        "fid": 46,
+        "limestownpart": "Kemel",
+        "limestown": "Heidenrod",
+        "limesobject": "Kemel 1",
+        "ID": 108,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.016542,
+          50.167774
+        ]
+      }
+    },
+    {
+      "id": "46",
+      "type": "Feature",
+      "properties": {
+        "fid": 47,
+        "limestownpart": "Adolfseck",
+        "limestown": "Bad Schwalbach",
+        "limesobject": "Adolfseck",
+        "ID": 109,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.077694,
+          50.16494
+        ]
+      }
+    },
+    {
+      "id": "47",
+      "type": "Feature",
+      "properties": {
+        "fid": 48,
+        "limestownpart": "Heftrich",
+        "limestown": "Idstein",
+        "limesobject": "Alteburg-Heftrich 2",
+        "ID": 110,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.336425,
+          50.21039
+        ]
+      }
+    },
+    {
+      "id": "48",
+      "type": "Feature",
+      "properties": {
+        "fid": 49,
+        "limestownpart": "Heftrich",
+        "limestown": "Idstein",
+        "limesobject": "Alteburg-Heftrich 1",
+        "ID": 111,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.339083,
+          50.211682
+        ]
+      }
+    },
+    {
+      "id": "49",
+      "type": "Feature",
+      "properties": {
+        "fid": 50,
+        "limestownpart": "???",
+        "limestown": "Butzbach",
+        "limesobject": "Degerfeld",
+        "ID": 112,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.655724,
+          50.443519
+        ]
+      }
+    },
+    {
+      "id": "50",
+      "type": "Feature",
+      "properties": {
+        "fid": 51,
+        "limestownpart": "Gr\u00fcningen",
+        "limestown": "Pohlheim",
+        "limesobject": "Hainhaus",
+        "ID": 113,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.725101,
+          50.52089
+        ]
+      }
+    },
+    {
+      "id": "51",
+      "type": "Feature",
+      "properties": {
+        "fid": 52,
+        "limestownpart": "Bettenhausen",
+        "limestown": "Lich",
+        "limesobject": "Langsdorf",
+        "ID": 114,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.85455,
+          50.482998
+        ]
+      }
+    },
+    {
+      "id": "52",
+      "type": "Feature",
+      "properties": {
+        "fid": 53,
+        "limestownpart": "Bingenheim",
+        "limestown": "Echzell",
+        "limesobject": "Lochberg",
+        "ID": 115,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.89565,
+          50.361023
+        ]
+      }
+    },
+    {
+      "id": "53",
+      "type": "Feature",
+      "properties": {
+        "fid": 54,
+        "limestownpart": "Bisses",
+        "limestown": "Echzell",
+        "limesobject": "Haselheck",
+        "ID": 116,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.901594,
+          50.388546
+        ]
+      }
+    },
+    {
+      "id": "54",
+      "type": "Feature",
+      "properties": {
+        "fid": 55,
+        "limestownpart": "Inheiden",
+        "limestown": "Hungen",
+        "limesobject": "Inheiden 1",
+        "ID": 117,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.903685,
+          50.46017
+        ]
+      }
+    },
+    {
+      "id": "55",
+      "type": "Feature",
+      "properties": {
+        "fid": 56,
+        "limestownpart": "Inheiden",
+        "limestown": "Hungen",
+        "limesobject": "Inheiden 2",
+        "ID": 118,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.906795,
+          50.461008
+        ]
+      }
+    },
+    {
+      "id": "56",
+      "type": "Feature",
+      "properties": {
+        "fid": 57,
+        "limestownpart": "Unter-Widdersheim",
+        "limestown": "Nidda",
+        "limesobject": "Unter-Widdersheim",
+        "ID": 119,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.908644,
+          50.422543
+        ]
+      }
+    },
+    {
+      "id": "57",
+      "type": "Feature",
+      "properties": {
+        "fid": 58,
+        "limestownpart": "Steinheim",
+        "limestown": "Hungen",
+        "limesobject": "Wingertsberg",
+        "ID": 120,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.91015,
+          50.451806
+        ]
+      }
+    },
+    {
+      "id": "58",
+      "type": "Feature",
+      "properties": {
+        "fid": 59,
+        "limestownpart": "Staden",
+        "limestown": "Florstadt",
+        "limesobject": "Staden",
+        "ID": 121,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.915133,
+          50.326418
+        ]
+      }
+    },
+    {
+      "id": "59",
+      "type": "Feature",
+      "properties": {
+        "fid": 60,
+        "limestownpart": "Steinheim",
+        "limestown": "Hungen",
+        "limesobject": "Massohl",
+        "ID": 122,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.91616,
+          50.437561
+        ]
+      }
+    },
+    {
+      "id": "60",
+      "type": "Feature",
+      "properties": {
+        "fid": 61,
+        "limestownpart": "Stammheim",
+        "limestown": "Florstadt",
+        "limesobject": "Stammheim",
+        "ID": 123,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.923034,
+          50.31257
+        ]
+      }
+    },
+    {
+      "id": "61",
+      "type": "Feature",
+      "properties": {
+        "fid": 62,
+        "limestownpart": "Langendiebach",
+        "limestown": "Erlensee",
+        "limesobject": "Langendiebach",
+        "ID": 124,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.985621,
+          50.167989
+        ]
+      }
+    },
+    {
+      "id": "62",
+      "type": "Feature",
+      "properties": {
+        "fid": 63,
+        "limestownpart": "Hettingen",
+        "limestown": "Buchen",
+        "limesobject": "Altheimer Stra\u00dfe",
+        "ID": 125,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.383568,
+          49.545215
+        ]
+      }
+    },
+    {
+      "id": "63",
+      "type": "Feature",
+      "properties": {
+        "fid": 64,
+        "limestownpart": "Rinschheim",
+        "limestown": "Buchen",
+        "limesobject": "Holderbusch",
+        "ID": 126,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.395263,
+          49.515019
+        ]
+      }
+    },
+    {
+      "id": "64",
+      "type": "Feature",
+      "properties": {
+        "fid": 65,
+        "limestownpart": "???",
+        "limestown": "Osterburken",
+        "limesobject": "Salzberg",
+        "ID": 127,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.430446,
+          49.43113
+        ]
+      }
+    },
+    {
+      "id": "65",
+      "type": "Feature",
+      "properties": {
+        "fid": 66,
+        "limestownpart": "Unterkessach",
+        "limestown": "Widdern",
+        "limesobject": "Lehnenwiesen",
+        "ID": 128,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.457339,
+          49.350652
+        ]
+      }
+    },
+    {
+      "id": "66",
+      "type": "Feature",
+      "properties": {
+        "fid": 67,
+        "limestownpart": "Sindringen",
+        "limestown": "Forchtenberg",
+        "limesobject": "Sindringen",
+        "ID": 129,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.47859,
+          49.279712
+        ]
+      }
+    },
+    {
+      "id": "67",
+      "type": "Feature",
+      "properties": {
+        "fid": 68,
+        "limestownpart": "???",
+        "limestown": "Mainhardt",
+        "limesobject": "Herrenwiesen",
+        "ID": 130,
+        "limescategory": "Kleinkastell"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.561952,
+          49.080419
+        ]
+      }
+    }
+  ],
+  "numberMatched": 68,
+  "numberReturned": 68,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ]
+}

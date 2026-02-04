@@ -1,0 +1,32 @@
+var features={
+  "id": "12",
+  "type": "Feature",
+  "properties": {
+    "fid": 13,
+    "limestownpart": "Nieder-Rosbach",
+    "limestown": "Rosbach",
+    "limesobject": "Rittergr\u00e4ber",
+    "ID": 75,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      8.62539,
+      50.305565
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/12",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

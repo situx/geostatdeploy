@@ -1,0 +1,32 @@
+var features={
+  "id": "48",
+  "type": "Feature",
+  "properties": {
+    "fid": 49,
+    "limestownpart": "Heftrich",
+    "limestown": "Idstein",
+    "limesobject": "Alteburg-Heftrich 1",
+    "ID": 111,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      8.339083,
+      50.211682
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/48",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

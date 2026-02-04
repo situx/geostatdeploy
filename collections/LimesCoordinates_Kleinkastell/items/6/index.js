@@ -1,0 +1,32 @@
+var features={
+  "id": "6",
+  "type": "Feature",
+  "properties": {
+    "fid": 7,
+    "limestownpart": "???",
+    "limestown": "Glash\u00fctten",
+    "limesobject": "Maisel",
+    "ID": 69,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      8.390579,
+      50.218544
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/6",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+var features={
+  "id": "38",
+  "type": "Feature",
+  "properties": {
+    "fid": 39,
+    "limestownpart": "Altdorf",
+    "limestown": "Titting",
+    "limesobject": "Hegelohe",
+    "ID": 101,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      11.271316,
+      48.975771
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/38",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+var features={
+  "id": "65",
+  "type": "Feature",
+  "properties": {
+    "fid": 66,
+    "limestownpart": "Unterkessach",
+    "limestown": "Widdern",
+    "limesobject": "Lehnenwiesen",
+    "ID": 128,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      9.457339,
+      49.350652
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/65",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

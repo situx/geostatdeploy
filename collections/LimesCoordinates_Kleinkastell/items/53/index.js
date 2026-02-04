@@ -1,0 +1,32 @@
+var features={
+  "id": "53",
+  "type": "Feature",
+  "properties": {
+    "fid": 54,
+    "limestownpart": "Bisses",
+    "limestown": "Echzell",
+    "limesobject": "Haselheck",
+    "ID": 116,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      8.901594,
+      50.388546
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/53",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

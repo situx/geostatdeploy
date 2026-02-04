@@ -1,0 +1,32 @@
+var features={
+  "id": "2",
+  "type": "Feature",
+  "properties": {
+    "fid": 3,
+    "limestownpart": "Oberlahnstein/Becheln",
+    "limestown": "Lahnstein",
+    "limesobject": "Becheln",
+    "ID": 65,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      7.738396,
+      50.28661
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/2",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

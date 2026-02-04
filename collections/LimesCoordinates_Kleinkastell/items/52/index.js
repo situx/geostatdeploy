@@ -1,0 +1,32 @@
+var features={
+  "id": "52",
+  "type": "Feature",
+  "properties": {
+    "fid": 53,
+    "limestownpart": "Bingenheim",
+    "limestown": "Echzell",
+    "limesobject": "Lochberg",
+    "ID": 115,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      8.89565,
+      50.361023
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/52",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

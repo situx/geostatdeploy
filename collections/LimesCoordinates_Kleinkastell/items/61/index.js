@@ -1,0 +1,32 @@
+var features={
+  "id": "61",
+  "type": "Feature",
+  "properties": {
+    "fid": 62,
+    "limestownpart": "Langendiebach",
+    "limestown": "Erlensee",
+    "limesobject": "Langendiebach",
+    "ID": 124,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      8.985621,
+      50.167989
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/61",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+var features={
+  "id": "62",
+  "type": "Feature",
+  "properties": {
+    "fid": 63,
+    "limestownpart": "Hettingen",
+    "limestown": "Buchen",
+    "limesobject": "Altheimer Stra\u00dfe",
+    "ID": 125,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      9.383568,
+      49.545215
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/62",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

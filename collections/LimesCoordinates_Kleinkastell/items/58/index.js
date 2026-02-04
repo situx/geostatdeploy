@@ -1,0 +1,32 @@
+var features={
+  "id": "58",
+  "type": "Feature",
+  "properties": {
+    "fid": 59,
+    "limestownpart": "Staden",
+    "limestown": "Florstadt",
+    "limesobject": "Staden",
+    "ID": 121,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      8.915133,
+      50.326418
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/58",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

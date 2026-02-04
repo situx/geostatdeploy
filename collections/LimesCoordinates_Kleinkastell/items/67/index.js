@@ -1,0 +1,32 @@
+var features={
+  "id": "67",
+  "type": "Feature",
+  "properties": {
+    "fid": 68,
+    "limestownpart": "???",
+    "limestown": "Mainhardt",
+    "limesobject": "Herrenwiesen",
+    "ID": 130,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      9.561952,
+      49.080419
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/67",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}

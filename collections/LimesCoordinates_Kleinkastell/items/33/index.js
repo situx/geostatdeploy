@@ -1,0 +1,32 @@
+var features={
+  "id": "33",
+  "type": "Feature",
+  "properties": {
+    "fid": 34,
+    "limestownpart": "???",
+    "limestown": "Gunzenhausen",
+    "limesobject": "Hinterer Schlossberg",
+    "ID": 96,
+    "limescategory": "Kleinkastell"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      10.780904,
+      49.116839
+    ]
+  },
+  "numberMatched": 1,
+  "numberReturned": 1,
+  "crs": [
+    "http://www.opengis.net/def/crs/EPSG/0/4326"
+  ],
+  "links": [
+    {
+      "href": "https://situx.github.io/geostatdeploy/collections/LimesCoordinates_Kleinkastell/items/33",
+      "rel": "self",
+      "type": "application/json",
+      "title": "this document as JS"
+    }
+  ]
+}
