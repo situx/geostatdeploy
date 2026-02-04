@@ -8,6 +8,8 @@ import os
 
 htmlheader="""<html><head><title>{{title}}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.css" />
+<script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
@@ -103,7 +105,13 @@ if (document.getElementById("map")){
         onEachFeature: function (feature, layer) {layer.bindPopup(generateLeafletPopup(feature, layer))}
     }).addTo(map);
     map.fitBounds(featLayer.getBounds());
-}</script>
+}
+if (document.getElementById("feattable")){
+    $(document).ready( function () {
+        $('#feattable').DataTable();
+    });
+}
+</script>
 """
 
 parser=argparse.ArgumentParser()
@@ -332,7 +340,7 @@ for file in os.listdir(rootdir):
         with open(outpath + "/collections/" + fileid + "/items/indexc.html", 'w', encoding="utf-8") as f:
             breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../\">Home</a></li><li><a href=\"../../indexc.html\">Collections</a></li><li><a href=\"../indexc.html\">"+fileid+"</a></li><li>Items</li></ul>"""
             f.write(htmlheader.replace("{{title}}",str(fileid)+" Features").replace("{{breadcrumb}}",breadcrumb))
-            f.write(gdf.to_html())
+            f.write(gdf.to_html().replace("<table ","<table id=\"feattable\" "))
             f.write(htmlfooter.replace("{{footercontent}}",""))
             f.write("</body></html>")
         i = 0
@@ -372,7 +380,7 @@ for file in os.listdir(rootdir):
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/indexc.html", 'w',encoding="utf-8") as f:
                 breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../../\">Home</a></li><li><a href=\"../../../indexc.html\">Collections</a></li><li><a href=\"../../indexc.html\">"+fileid+"</a></li><li><a href=\"../indexc.html\">Items</a></li><li>"+str(fid)+"</li></ul>"""
                 f.write(htmlheader.replace("{{title}}",fid).replace("{{breadcrumb}}",breadcrumb))
-                f.write(gdf.iloc[[i]].to_html())
+                f.write(gdf.iloc[[i]].to_html().replace("<table ","<table id=\"feattable\" "))
                 f.write(htmlfooter.replace("{{footercontent}}",""))
                 f.write("</body></html>")
             i += 1
