@@ -155,7 +155,7 @@ def createFolders(outpath):
 
 
 
-indexhtml="<html><head><title>Indexpage</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"></head><body><h3>Static OGC API Features</h3>This is the landing page of this static OGC API features service.<ul><li><a href=\"api/api.html\">API as HTML</a></li><li><a href=\"collections/indexc.html\">Collections</li><li><a href=\"conformance/index.html\">Conformance</a></li></ul></body></html>"
+indexhtml="<html><head><title>Indexpage</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"></head><body><h3>Static OGC API Features</h3>This is the landing page of this static OGC API features service.<ul><li><a href=\"api/api.html\">API as HTML</a></li><li><a href=\"collections/indexc.html\">Collections</li><li><a href=\"conformance/indexc.html\">Conformance</a></li></ul></body></html>"
 collectionsjson = {"collections": [], "links": [
     {"href": deploypath + "/collections/index.json", "rel": "self", "type": "application/json",
      "title": "this document as JSON"},
@@ -264,6 +264,10 @@ with open(outpath + "/conformance/index.json", 'w', encoding="utf-8") as f:
 
 with open(outpath + "/conformance/index.html", 'w', encoding="utf-8") as f:
     json.dump(conformancejson, f, indent=2)
+
+with open(outpath + "/conformance/indexc.html", 'w', encoding="utf-8") as f:
+    f.write(htmlheader.replace("{{title}}","Conformance").replace("id=\"map\"","id=\"nomap\" style=\"visibility:none\"").replace("{{breadcrumb}}","<ul class=\"breadcrumb\"><li><a href=\"../\">Home</a></li><li>Conformance</li></ul>"))
+    f.write(htmlfooter.replace("{{footercontent}}",""))
 
 with open(outpath + "/index.json", 'w', encoding="utf-8") as f:
     json.dump(landingpagejson, f, indent=2)
