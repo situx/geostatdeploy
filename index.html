@@ -1,1 +1,105 @@
-<html><head><title>Indexpage</title><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><h3>Static OGC API Features</h3>This is the landing page of this static OGC API features service.<ul><li><a href="api/api.html">API as HTML</a></li><li><a href="collections/indexc.html">Collections</li><li><a href="conformance/indexc.html">Conformance</a></li></ul></body></html>
+<html><head><title>Indexpage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.css" />
+<script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+<script src="index.js">
+</script>
+<style>
+footer{
+  list-style: none;
+  background-color: #eee;
+}
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: #eee;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<header>
+<h3>Indexpage</h3>
+<ul class="breadcrumb"><li>Home</li></ul>
+</header>
+<div id="map" style="height:500px;z-index: 0;"></div>
+<h3>Static OGC API Features</h3>This is the landing page of this static OGC API features service.<ul><li><a href="api/api.html">API as HTML</a></li><li><a href="collections/indexc.html">Collections</li><li><a href="conformance/indexc.html">Conformance</a></li></ul>
+<footer>This page as <a href="index.json">[JSON]</a> <a href="index.html">[HTML]</a>
+</footer><script>
+function generateLeafletPopup(feature, layer){
+    var popup="<b>"
+    if("name" in feature && feature.name!=""){
+        popup+="<a href=\""+feature.id+"\" class=\"footeruri\" target=\"_blank\">"+feature.name+"</a></b><br/><ul>"
+    }else{
+        popup+="<a href=\""+feature.id+"\" class=\"footeruri\" target=\"_blank\">"+feature.id+"</a></b><br/><ul>"
+    }
+    for(prop in feature.properties){
+        popup+="<li>"
+        if(prop.startsWith("http")){
+            popup+="<a href=\""+prop+"\" target=\"_blank\">"+prop.substring(prop.lastIndexOf('/')+1)+"</a>"
+        }else{
+            popup+=prop
+        }
+        popup+=" : "
+        if(Array.isArray(feature.properties[prop]) && feature.properties[prop].length>1){
+            popup+="<ul>"
+            for(item of feature.properties[prop]){
+                popup+="<li>"
+                if((item+"").startsWith("http")){
+                    popup+="<a href=\""+item+"\" target=\"_blank\">"+item.substring(item.lastIndexOf('/')+1)+"</a>"
+                }else{
+                    popup+=item
+                }
+                popup+="</li>"
+            }
+            popup+="</ul>"
+        }else if(Array.isArray(feature.properties[prop]) && (feature.properties[prop][0]+"").startsWith("http")){
+            popup+="<a href=\""+feature.properties[prop][0]+"\" target=\"_blank\">"+feature.properties[prop][0].substring(feature.properties[prop][0].lastIndexOf('/')+1)+"</a>"
+        }else{
+            popup+=feature.properties[prop]+""
+        }
+        popup+="</li>"
+    }
+    popup+="</ul>"
+    return popup
+}
+if (document.getElementById("map")){
+    const map = L.map('map').setView([51.505, -0.09], 13);
+    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    featLayer=L.geoJSON(features, {
+        onEachFeature: function (feature, layer) {layer.bindPopup(generateLeafletPopup(feature, layer))}
+    }).addTo(map);
+    map.fitBounds(featLayer.getBounds());
+}
+if (document.getElementById("feattable")){
+    $('#feattable').DataTable();
+}
+</script>
+</body></html>
