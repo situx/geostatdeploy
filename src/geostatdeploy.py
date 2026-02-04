@@ -155,7 +155,7 @@ def createFolders(outpath):
 
 
 
-indexhtml="<html><head><title>Indexpage</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"></head><body><h3>Static OGC API Features</h3>This is the landing page of this static OGC API features service.<ul><li><a href=\"api/api.html\">API as HTML</a></li><li><a href=\"collections/indexc.html\">Collections</li><li><a href=\"conformance/indexc.html\">Conformance</a></li></ul></body></html>"
+indexhtml=htmlheader.replace("{{title}}","Indexpage").replace("{{breadcrumb}}","<ul class=\"breadcrumb\"><li>Home</li></ul>")+"<h3>Static OGC API Features</h3>This is the landing page of this static OGC API features service.<ul><li><a href=\"api/api.html\">API as HTML</a></li><li><a href=\"collections/indexc.html\">Collections</li><li><a href=\"conformance/indexc.html\">Conformance</a></li></ul>"+htmlfooter.replace("{{footercontent}}","")+"</body></html>"
 collectionsjson = {"collections": [], "links": [
     {"href": deploypath + "/collections/index.json", "rel": "self", "type": "application/json",
      "title": "this document as JSON"},
