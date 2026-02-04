@@ -79,6 +79,41 @@ function generateLeafletPopup(feature, layer){
     popup+="</ul>"
     return popup
 }
+function rewriteLink(thelink){
+    if(thelink==null){
+        rest=search[document.getElementById('search').value].replace(baseurl,"")
+    }else{
+        curlocpath=window.location.href.replace(baseurl,"")
+        rest=thelink.replace(baseurl,"")
+    }
+    if(!(rest.endsWith("/")) && !(rest.endsWith(".html"))){
+        rest+="/"
+    }
+    count=0
+    if(!indexpage){
+        count=rest.split("/").length-1
+    }
+    console.log(count)
+    counter=0
+    if (typeof relativedepth !== 'undefined'){
+        while(counter<relativedepth){
+            rest="../"+rest
+            counter+=1
+        }
+    }else{
+        while(counter<count){
+            rest="../"+rest
+            counter+=1
+        }
+    }
+    //console.log(rest)
+    //console.log(rest.endsWith("index.html"))
+	if(!rest.includes("nonns_") && !rest.endsWith(".html")){
+		rest+="index.html"
+	}
+    console.log(rest)
+    return rest
+}
 if (document.getElementById("map")){
     const map = L.map('map').setView([51.505, -0.09], 13);
     const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
