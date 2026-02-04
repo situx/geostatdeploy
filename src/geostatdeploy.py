@@ -8,6 +8,7 @@ import os
 
 htmlheader="""<html><head><title>{{title}}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.css" />
 <script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -107,7 +108,7 @@ if (document.getElementById("map")){
     map.fitBounds(featLayer.getBounds());
 }
 if (document.getElementById("feattable")){
-    document.getElementById('feattable').DataTable();
+    $('#feattable').DataTable();
 }
 </script>
 """
