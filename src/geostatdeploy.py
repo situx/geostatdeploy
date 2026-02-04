@@ -323,7 +323,7 @@ for file in os.listdir(rootdir):
             f.write(collectionshtml.replace("{{collectiontable}}", curcolhtml))
             f.write(htmlfooter.replace("{{footercontent}}",""))
         geodict = gdf.to_geo_dict()
-        collectiontable += "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"" + fileid + "/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"" + fileid + "/index.json/\">[Collection as JSON]</a></td></tr>"
+        collectiontable += "<tr><td><a href=\"" + fileid + "/indexc.html\">" + fileid + "</a></td><td><a href=\"" + fileid + "/index.json/\">[Collection as JSON]</a></td></tr>"
         if not os.path.exists(outpath + "/collections/" + fileid + "/items/"):
             os.makedirs(outpath + "/collections/" + fileid + "/items/")
         res=json.loads(gdf.to_json())
