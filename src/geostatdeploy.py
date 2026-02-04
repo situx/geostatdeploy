@@ -107,9 +107,7 @@ if (document.getElementById("map")){
     map.fitBounds(featLayer.getBounds());
 }
 if (document.getElementById("feattable")){
-    $(document).ready( function () {
-        $('#feattable').DataTable();
-    });
+    document.getElementById('feattable').DataTable();
 }
 </script>
 """
