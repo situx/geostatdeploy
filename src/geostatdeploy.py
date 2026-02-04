@@ -8,9 +8,12 @@ import os
 
 htmlheader="""<html><head><title>{{title}}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
 <script src="index.js">
 </script>
 </head>
@@ -285,29 +288,16 @@ for file in os.listdir(rootdir):
         collectiontable += "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"" + fileid + "/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"" + fileid + "/index.json/\">[Collection as JSON]</a></td></tr>"
         if not os.path.exists(outpath + "/collections/" + fileid + "/items/"):
             os.makedirs(outpath + "/collections/" + fileid + "/items/")
+        res=json.loads(gdf.to_json())
+        flen=len(res["features"])
+        res["numberMatched"]=flen
+        res["numberReturned"]=flen
+        res["crs"]=[formatCRS(str(gdf.crs))]
         with open(outpath + "/collections/" + fileid + "/items/index.json", 'w', encoding="utf-8") as f:
-            res=json.loads(gdf.to_json())
-            flen=len(res["features"])
-            res["numberMatched"]=flen
-            res["numberReturned"]=flen
-            res["crs"]=[formatCRS(str(gdf.crs))]
-            #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
             json.dump(rewind(res),f, indent=2)
         with open(outpath + "/collections/" + fileid + "/items/index.js", 'w', encoding="utf-8") as f:
-            res=json.loads(gdf.to_json())
-            flen=len(res["features"])
-            res["numberMatched"]=flen
-            res["numberReturned"]=flen
-            res["crs"]=[formatCRS(str(gdf.crs))]
-            #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
             f.write("var features="+json.dumps(rewind(res), indent=2))
         with open(outpath + "/collections/" + fileid + "/items/index.html", 'w', encoding="utf-8") as f:
-            res=json.loads(gdf.to_json())
-            flen=len(res["features"])
-            res["numberMatched"]=flen
-            res["numberReturned"]=flen
-            res["crs"]=[formatCRS(str(gdf.crs))]
-            #res["bbox"]=gdf.iloc[[i]].total_bounds[0]
             json.dump(rewind(res),f, indent=2)
         with open(outpath + "/collections/" + fileid + "/items/indexc.html", 'w', encoding="utf-8") as f:
             f.write("<html><head><title>"+str(fileid)+" Features</title></head><body><h3>Features of "+str(fileid)+"</h3><ul>")
