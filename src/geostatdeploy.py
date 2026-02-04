@@ -317,6 +317,11 @@ for file in os.listdir(rootdir):
             {"href": deploypath + "/collections/" + fileid+"/indexc.html" , "rel": "collection", "type": "text/html","title": "Collection as HTML"},
             {"href": deploypath + "/collections/" + fileid + "/index.ttl", "rel": "collection", "type": "text/ttl","title": "Collection as TTL"}],
             "extent": {"spatial": {"bbox": [gdfbbox[0], gdfbbox[2], gdfbbox[1], gdfbbox[3]], "crs":formatCRS(str(gdf.crs))}},"crs":[formatCRS(str(gdf.crs))]})
+        res=json.loads(gdf.to_json())
+        flen=len(res["features"])
+        res["numberMatched"]=flen
+        res["numberReturned"]=flen
+        res["crs"]=[formatCRS(str(gdf.crs))]
         if not os.path.exists(outpath + "/collections/" + fileid):
             os.makedirs(outpath + "/collections/" + fileid)
         with open(outpath + "/collections/" + fileid + "/index.json", 'w', encoding="utf-8") as f:
@@ -330,17 +335,12 @@ for file in os.listdir(rootdir):
         with open(outpath + "/collections/" + fileid + "/indexc.html", 'w', encoding="utf-8") as f:
             breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../\">Home</a></li><li><a href=\"../indexc.html\">Collections</a></li><li>"+fileid+"</li></ul>"""
             f.write(htmlheader.replace("{{title}}","Collection: "+str(fileid)).replace("{{breadcrumb}}",breadcrumb))
-            f.write("<ul><li><a href=\"items/indexc.html\">Details</a></li></ul>")
+            f.write("<ul><li>"+str(flen)+" Features</li><li>CRS: "+str(res["crs"])+"</li><li><a href=\"items/indexc.html\">Details</a></li></ul>")
             f.write(htmlfooter.replace("{{footercontent}}",""))
         geodict = gdf.to_geo_dict()
         collectiontable += "<tr><td><a href=\"" + fileid + "/indexc.html\">" + fileid + "</a></td><td><a href=\"" + fileid + "/index.json/\">[Collection as JSON]</a></td></tr>"
         if not os.path.exists(outpath + "/collections/" + fileid + "/items/"):
             os.makedirs(outpath + "/collections/" + fileid + "/items/")
-        res=json.loads(gdf.to_json())
-        flen=len(res["features"])
-        res["numberMatched"]=flen
-        res["numberReturned"]=flen
-        res["crs"]=[formatCRS(str(gdf.crs))]
         with open(outpath + "/collections/" + fileid + "/items/index.json", 'w', encoding="utf-8") as f:
             json.dump(rewind(res),f, indent=2)
         with open(outpath + "/collections/" + fileid + "/items/index.js", 'w', encoding="utf-8") as f:
