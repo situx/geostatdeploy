@@ -16,16 +16,41 @@ htmlheader="""<html><head><title>{{title}}</title>
      crossorigin=""></script>
 <script src="index.js">
 </script>
+<style>
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: #eee;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+</style>
 </head>
 <body>
 <header>
+{{breadcrumb}}
 <h3>{{title}}</h3>
 </header>
 <div id="map" style="height:500px;z-index: 0;"></div>
 """
 
 htmlfooter="""
-<footer>{{footercontent}}
+<footer>This page as <a href="index.json">[JSON]</a> <a href="index.html">[HTML]</a>{{footercontent}}
 </footer><script>
 function generateLeafletPopup(feature, layer){
     var popup="<b>"
@@ -301,7 +326,8 @@ for file in os.listdir(rootdir):
         with open(outpath + "/collections/" + fileid + "/items/index.html", 'w', encoding="utf-8") as f:
             json.dump(rewind(res),f, indent=2)
         with open(outpath + "/collections/" + fileid + "/items/indexc.html", 'w', encoding="utf-8") as f:
-            f.write(htmlheader.replace("{{title}}",str(fileid)+" Features"))
+            breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../\">Home</a></li><li><a href=\"../../\">Collections</a></li><li><a href=\"../\">"+fileid+"</a></li><li>Items</li></ul>"""
+            f.write(htmlheader.replace("{{title}}",str(fileid)+" Features").replace("{{breadcrumb}}",breadcrumb))
             f.write("<ul>")
             i=0
             for row in gdf.itertuples():
@@ -346,7 +372,8 @@ for file in os.listdir(rootdir):
                 }]
                 json.dump(rewind(res),f, indent=2)
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/indexc.html", 'w',encoding="utf-8") as f:
-                f.write(htmlheader.replace("{{title}}",fid))
+                breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../../\">Home</a></li><li><a href=\"../../../\">Collections</a></li><li><a href=\"../../\">"+fileid+"</a></li><li><a href=\"../\">Items</a></li><li>"+str(fid)+"</li></ul>"""
+                f.write(htmlheader.replace("{{title}}",fid).replace("{{breadcrumb}}",breadcrumb))
                 f.write(gdf.iloc[[i]].to_html())
                 f.write(htmlfooter.replace("{{footercontent}}",""))
                 f.write("</body></html>")
