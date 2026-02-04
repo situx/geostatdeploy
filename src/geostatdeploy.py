@@ -21,7 +21,7 @@ htmlheader="""<html><head><title>{{title}}</title>
 <header>
 <h3>{{title}}</h3>
 </header>
-<div id="map" style="height:500px;z-index: 0;"></div>")
+<div id="map" style="height:500px;z-index: 0;"></div>
 """
 
 htmlfooter="""
