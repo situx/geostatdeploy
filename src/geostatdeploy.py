@@ -282,8 +282,9 @@ for file in os.listdir(rootdir):
             json.dump(curcoll, f, indent=2)
         curcolhtml = collectiontabletemp + "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"items/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"items/index.json/\">[Collection as JSON]</a></td></tr>"
         with open(outpath + "/collections/" + fileid + "/indexc.html", 'w', encoding="utf-8") as f:
-            f.write("<html><head><title>Collection: "+str(fileid)+"</title></head><body><h3>Collection: "+str(fileid)+"</h3><div id=\"map\" style=\"width:500px;height:500px\"></div>")
+            f.write(htmlheader.replace("{{title}}","Collection: "+str(fileid)))
             f.write(collectionshtml.replace("{{collectiontable}}", curcolhtml))
+            f.write(htmlfooter.replace("{{footercontent}}",""))
         geodict = gdf.to_geo_dict()
         collectiontable += "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"" + fileid + "/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"" + fileid + "/index.json/\">[Collection as JSON]</a></td></tr>"
         if not os.path.exists(outpath + "/collections/" + fileid + "/items/"):
@@ -300,13 +301,16 @@ for file in os.listdir(rootdir):
         with open(outpath + "/collections/" + fileid + "/items/index.html", 'w', encoding="utf-8") as f:
             json.dump(rewind(res),f, indent=2)
         with open(outpath + "/collections/" + fileid + "/items/indexc.html", 'w', encoding="utf-8") as f:
-            f.write("<html><head><title>"+str(fileid)+" Features</title></head><body><h3>Features of "+str(fileid)+"</h3><ul>")
+            f.write(htmlheader.replace("{{title}}",str(fileid)+" Features"))
+            f.write("<ul>")
             i=0
             for row in gdf.itertuples():
                 fid = gdf.iloc[[i]].to_geo_dict()["features"][0]["id"]
                 f.write("<li><a href=\""+fid+"/indexc.html\">"+str(fid)+"</a></li>")
                 i+=1
-            f.write("</ul></body></html>")
+            f.write("</ul>")
+            f.write(htmlfooter.replace("{{footercontent}}",""))
+            f.write("</body></html>")
         i = 0
         outdict={"type":"Collection","features":[]}
         for row in gdf.itertuples():
