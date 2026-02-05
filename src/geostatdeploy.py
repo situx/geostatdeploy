@@ -317,7 +317,7 @@ for file in os.listdir(rootdir):
             {"href": deploypath + "/collections/" + fileid+"/indexc.html" , "rel": "collection", "type": "text/html","title": "Collection as HTML"},
             {"href": deploypath + "/collections/" + fileid + "/index.ttl", "rel": "collection", "type": "text/ttl","title": "Collection as TTL"}],
             "extent": {"spatial": {"bbox": [gdfbbox[0], gdfbbox[2], gdfbbox[1], gdfbbox[3]], "crs":formatCRS(str(gdf.crs))}},"crs":[formatCRS(str(gdf.crs))]})
-                res=json.loads(gdf.to_json())
+        res=json.loads(gdf.to_json())
         flen=len(res["features"])
         res["numberMatched"]=flen
         res["numberReturned"]=flen
