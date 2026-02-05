@@ -317,11 +317,20 @@ for file in os.listdir(rootdir):
             {"href": deploypath + "/collections/" + fileid+"/indexc.html" , "rel": "collection", "type": "text/html","title": "Collection as HTML"},
             {"href": deploypath + "/collections/" + fileid + "/index.ttl", "rel": "collection", "type": "text/ttl","title": "Collection as TTL"}],
             "extent": {"spatial": {"bbox": [gdfbbox[0], gdfbbox[2], gdfbbox[1], gdfbbox[3]], "crs":formatCRS(str(gdf.crs))}},"crs":[formatCRS(str(gdf.crs))]})
-        res=json.loads(gdf.to_json())
+                res=json.loads(gdf.to_json())
         flen=len(res["features"])
         res["numberMatched"]=flen
         res["numberReturned"]=flen
         res["crs"]=[formatCRS(str(gdf.crs))]
+        newf=[]
+        print(res)
+        for feat in res["features"]:
+            print(feat)
+            if feat["geometry"]!=None:
+                newf.append(rewind(feat))
+            else:
+                newf.append(feat)
+        res["features"]=newf
         if not os.path.exists(outpath + "/collections/" + fileid):
             os.makedirs(outpath + "/collections/" + fileid)
         with open(outpath + "/collections/" + fileid + "/index.json", 'w', encoding="utf-8") as f:
@@ -333,7 +342,7 @@ for file in os.listdir(rootdir):
             f.write("var features="+json.dumps(thegjson,indent=2))
         curcolhtml = collectiontabletemp + "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"items/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"items/index.json/\">[Collection as JSON]</a></td></tr>"
         with open(outpath + "/collections/" + fileid + "/indexc.html", 'w', encoding="utf-8") as f:
-            breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../\">Home</a></li><li><a href=\"../indexc.html\">Collections</a></li><li>"+fileid+"</li></ul>"""
+            breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../index.html\">Start</a></li><li><a href=\"../../../indexc.html\">Home</a></li><li><a href=\"../indexc.html\">Collections</a></li><li>"+fileid+"</li></ul>"""
             f.write(htmlheader.replace("{{title}}","Collection: "+str(fileid)).replace("{{breadcrumb}}",breadcrumb))
             f.write("<ul><li>"+str(flen)+" Features</li><li>CRS: "+str(res["crs"])+"</li><li><a href=\"items/indexc.html\">Details</a></li></ul>")
             f.write(htmlfooter.replace("{{footercontent}}",""))
@@ -342,13 +351,16 @@ for file in os.listdir(rootdir):
         if not os.path.exists(outpath + "/collections/" + fileid + "/items/"):
             os.makedirs(outpath + "/collections/" + fileid + "/items/")
         with open(outpath + "/collections/" + fileid + "/items/index.json", 'w', encoding="utf-8") as f:
-            json.dump(rewind(res),f, indent=2)
+            #json.dump(rewind(res),f, indent=2)
+            json.dump(res,f, indent=2)
         with open(outpath + "/collections/" + fileid + "/items/index.js", 'w', encoding="utf-8") as f:
-            f.write("var features="+json.dumps(rewind(res), indent=2))
+            f.write("var features="+json.dumps(res, indent=2))
+            #f.write("var features="+json.dumps(rewind(res), indent=2))
         with open(outpath + "/collections/" + fileid + "/items/index.html", 'w', encoding="utf-8") as f:
-            json.dump(rewind(res),f, indent=2)
+            json.dump(res,f, indent=2)
+            #json.dump(rewind(res),f, indent=2)
         with open(outpath + "/collections/" + fileid + "/items/indexc.html", 'w', encoding="utf-8") as f:
-            breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../\">Home</a></li><li><a href=\"../../indexc.html\">Collections</a></li><li><a href=\"../indexc.html\">"+fileid+"</a></li><li>Items</li></ul>"""
+            breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../index.html\">Start</a></li><li><a href=\"../../../indexc.html\">Home</a></li><li><a href=\"../../indexc.html\">Collections</a></li><li><a href=\"../indexc.html\">"+fileid+"</a></li><li>Items</li></ul>"""
             f.write(htmlheader.replace("{{title}}",str(fileid)+" Features").replace("{{breadcrumb}}",breadcrumb))
             f.write("<table id=\"feattable\"><thead><th>ID</th>")
             for prop in geodict["features"][0]["properties"]:
@@ -379,8 +391,10 @@ for file in os.listdir(rootdir):
                 "type": "application/json",
                 "title": "this document as JSON"
             }]
+            if res["geometry"]!=None:
+                res=rewind(res)
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/index.json", 'w',encoding="utf-8") as f:
-                json.dump(rewind(res),f, indent=2)
+                json.dump(res,f, indent=2)
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/index.js", 'w',encoding="utf-8") as f:
                 res["links"]=[{
                     "href": deploypath+"/collections/" + fileid + "/items/" + str(fid),
@@ -388,7 +402,7 @@ for file in os.listdir(rootdir):
                     "type": "application/json",
                     "title": "this document as JS"
                 }]
-                f.write("var features="+json.dumps(rewind(res), indent=2))
+                f.write("var features="+json.dumps(res, indent=2))
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/index.html", 'w',encoding="utf-8") as f:
                 res["links"]=[{
                     "href": deploypath+"/collections/" + fileid + "/items/" + str(fid),
@@ -396,9 +410,9 @@ for file in os.listdir(rootdir):
                     "type": "application/json",
                     "title": "this document as JSON"
                 }]
-                json.dump(rewind(res),f, indent=2)
+                json.dump(res,f, indent=2)
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/indexc.html", 'w',encoding="utf-8") as f:
-                breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../../\">Home</a></li><li><a href=\"../../../indexc.html\">Collections</a></li><li><a href=\"../../indexc.html\">"+fileid+"</a></li><li><a href=\"../indexc.html\">Items</a></li><li>"+str(fid)+"</li></ul>"""
+                breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../../index.html\">Start</a></li><li><a href=\"../../../../indexc.html\">Home</a></li><li><a href=\"../../../indexc.html\">Collections</a></li><li><a href=\"../../indexc.html\">"+fileid+"</a></li><li><a href=\"../indexc.html\">Items</a></li><li>"+str(fid)+"</li></ul>"""
                 f.write(htmlheader.replace("{{title}}","Feature: "+str(fid)).replace("{{breadcrumb}}",breadcrumb))
                 f.write(gdf.iloc[[i]].to_html().replace("<table ","<table id=\"feattable\" "))
                 f.write(htmlfooter.replace("{{footercontent}}",""))
