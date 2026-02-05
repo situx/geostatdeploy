@@ -342,7 +342,7 @@ for file in os.listdir(rootdir):
             f.write("var features="+json.dumps(thegjson,indent=2))
         curcolhtml = collectiontabletemp + "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"items/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"items/index.json/\">[Collection as JSON]</a></td></tr>"
         with open(outpath + "/collections/" + fileid + "/indexc.html", 'w', encoding="utf-8") as f:
-            breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../index.html\">Start</a></li><li><a href=\"../../../indexc.html\">Home</a></li><li><a href=\"../indexc.html\">Collections</a></li><li>"+fileid+"</li></ul>"""
+            breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../indexc.html\">Home</a></li><li><a href=\"../indexc.html\">Collections</a></li><li>"+fileid+"</li></ul>"""
             f.write(htmlheader.replace("{{title}}","Collection: "+str(fileid)).replace("{{breadcrumb}}",breadcrumb))
             f.write("<ul><li>"+str(flen)+" Features</li><li>CRS: "+str(res["crs"])+"</li><li><a href=\"items/indexc.html\">Details</a></li></ul>")
             f.write(htmlfooter.replace("{{footercontent}}",""))
@@ -360,7 +360,7 @@ for file in os.listdir(rootdir):
             json.dump(res,f, indent=2)
             #json.dump(rewind(res),f, indent=2)
         with open(outpath + "/collections/" + fileid + "/items/indexc.html", 'w', encoding="utf-8") as f:
-            breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../index.html\">Start</a></li><li><a href=\"../../../indexc.html\">Home</a></li><li><a href=\"../../indexc.html\">Collections</a></li><li><a href=\"../indexc.html\">"+fileid+"</a></li><li>Items</li></ul>"""
+            breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../indexc.html\">Home</a></li><li><a href=\"../../indexc.html\">Collections</a></li><li><a href=\"../indexc.html\">"+fileid+"</a></li><li>Items</li></ul>"""
             f.write(htmlheader.replace("{{title}}",str(fileid)+" Features").replace("{{breadcrumb}}",breadcrumb))
             f.write("<table id=\"feattable\"><thead><th>ID</th>")
             for prop in geodict["features"][0]["properties"]:
@@ -412,7 +412,7 @@ for file in os.listdir(rootdir):
                 }]
                 json.dump(res,f, indent=2)
             with open(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/indexc.html", 'w',encoding="utf-8") as f:
-                breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../../index.html\">Start</a></li><li><a href=\"../../../../indexc.html\">Home</a></li><li><a href=\"../../../indexc.html\">Collections</a></li><li><a href=\"../../indexc.html\">"+fileid+"</a></li><li><a href=\"../indexc.html\">Items</a></li><li>"+str(fid)+"</li></ul>"""
+                breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../../indexc.html\">Home</a></li><li><a href=\"../../../indexc.html\">Collections</a></li><li><a href=\"../../indexc.html\">"+fileid+"</a></li><li><a href=\"../indexc.html\">Items</a></li><li>"+str(fid)+"</li></ul>"""
                 f.write(htmlheader.replace("{{title}}","Feature: "+str(fid)).replace("{{breadcrumb}}",breadcrumb))
                 f.write(gdf.iloc[[i]].to_html().replace("<table ","<table id=\"feattable\" "))
                 f.write(htmlfooter.replace("{{footercontent}}",""))
