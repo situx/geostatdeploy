@@ -2,6 +2,8 @@ import geopandas
 import argparse
 from geodatasets import get_path
 from geojson_rewind import rewind
+from shapely import geometry
+import shapely
 import json
 import os
 
@@ -281,6 +283,7 @@ for file in os.listdir(rootdir):
         gdf = geopandas.read_file(rootdir + "/" + file, encoding="utf-8")
         gdfbbox = gdf.total_bounds
         print(gdfbbox)
+        bbox_polygon = geometry.box(*gdfbbox)
         dtypes=gdf.dtypes
         tomodify=[]
         for i, tp in dtypes.items():
@@ -338,7 +341,10 @@ for file in os.listdir(rootdir):
         with open(outpath + "/collections/" + fileid + "/index.html", 'w', encoding="utf-8") as f:
             json.dump(curcoll, f, indent=2)
         with open(outpath + "/collections/" + fileid + "/index.js", 'w', encoding="utf-8") as f:
-            thegjson={"type":"Feature","name":str(fileid)+" BBOX","properties":{},"geometry":{"type":"Polygon","coordinates":[[[curcoll["extent"]["spatial"]["bbox"][0],curcoll["extent"]["spatial"]["bbox"][1]], [curcoll["extent"]["spatial"]["bbox"][3],curcoll["extent"]["spatial"]["bbox"][1]], [curcoll["extent"]["spatial"]["bbox"][3],curcoll["extent"]["spatial"]["bbox"][2]], [curcoll["extent"]["spatial"]["bbox"][1],curcoll["extent"]["spatial"]["bbox"][3]], [curcoll["extent"]["spatial"]["bbox"][0],curcoll["extent"]["spatial"]["bbox"][1]] ]]}}
+            bboxgeom=shapely.to_geojson(bbox_polygon)
+            bbg=json.loads(bboxgeom)
+            thegjson={"type":"Feature","name":str(fileid)+" BBOX","properties":{},"geometry":bbg}
+            #thegjson={"type":"Feature","name":str(fileid)+" BBOX","properties":{},"geometry":{"type":"Polygon","coordinates":[[[curcoll["extent"]["spatial"]["bbox"][0],curcoll["extent"]["spatial"]["bbox"][1]], [curcoll["extent"]["spatial"]["bbox"][3],curcoll["extent"]["spatial"]["bbox"][1]], [curcoll["extent"]["spatial"]["bbox"][3],curcoll["extent"]["spatial"]["bbox"][2]], [curcoll["extent"]["spatial"]["bbox"][1],curcoll["extent"]["spatial"]["bbox"][3]], [curcoll["extent"]["spatial"]["bbox"][0],curcoll["extent"]["spatial"]["bbox"][1]] ]]}}
             f.write("var features="+json.dumps(thegjson,indent=2))
         curcolhtml = collectiontabletemp + "<tr><td><a href=\"" + fileid + "\">" + fileid + "</a></td><td><a href=\"items/indexc.html\">[Collection as HTML]</a>&nbsp;<a href=\"items/index.json/\">[Collection as JSON]</a></td></tr>"
         with open(outpath + "/collections/" + fileid + "/indexc.html", 'w', encoding="utf-8") as f:
