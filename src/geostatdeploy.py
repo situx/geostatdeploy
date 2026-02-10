@@ -10,17 +10,22 @@ import os
 
 htmlheader="""<html><head><title>{{title}}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.css" />
-<script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.13.11/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.13.6/sorting/natural.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.13.6/pagination/input.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
+<script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
 <script src="index.js">
+</script>
+<script>
+var map;
 </script>
 <style>
 footer{
@@ -100,7 +105,7 @@ function generateLeafletPopup(feature, layer){
     return popup
 }
 if (document.getElementById("map")){
-    const map = L.map('map').setView([51.505, -0.09], 13);
+    map = L.map('map',{"fullscreenControl": true}).setView([51.505, -0.09], 13);
     const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -111,7 +116,13 @@ if (document.getElementById("map")){
     map.fitBounds(featLayer.getBounds());
 }
 if (document.getElementById("feattable")){
-    $('#feattable').DataTable();
+    $('#feattable').DataTable({
+        columnDefs: [{ type: 'natural-nohtml', targets: '_all' }],
+        lengthMenu: [[10, 25, 100,250,500,1000, -1], [10, 25, 100,250,500,1000, "All"]],
+	    ordering: true,
+        paging: true,
+		pagingType: "input"
+    });
 }
 </script>
 """
@@ -365,6 +376,7 @@ for file in os.listdir(rootdir):
         with open(outpath + "/collections/" + fileid + "/items/index.html", 'w', encoding="utf-8") as f:
             json.dump(res,f, indent=2)
             #json.dump(rewind(res),f, indent=2)
+        centroids=gdf.centroid
         with open(outpath + "/collections/" + fileid + "/items/indexc.html", 'w', encoding="utf-8") as f:
             breadcrumb="<ul class=\"breadcrumb\"><li><a href=\"../../../indexc.html\">Home</a></li><li><a href=\"../../indexc.html\">Collections</a></li><li><a href=\"../indexc.html\">"+fileid+"</a></li><li>Items</li></ul>"""
             f.write(htmlheader.replace("{{title}}",str(fileid)+" Features").replace("{{breadcrumb}}",breadcrumb))
@@ -372,11 +384,13 @@ for file in os.listdir(rootdir):
             for prop in geodict["features"][0]["properties"]:
                 f.write("<th>"+str(prop)+"</th>")
             f.write("</tr></thead><tbody>")
+            ccounter=0
             for feat in geodict["features"]:
-                f.write("<tr><td><a href=\""+str(feat["id"])+"/indexc.html\">"+str(feat["id"])+"</a></td>")
+                f.write("<tr><td><a href=\""+str(feat["id"])+"/indexc.html\">"+str(feat["id"])+"</a>&nbsp;<a href=\"#\" onclick=\"map.flyTo(["+str(centroids[ccounter].y)+","+str(centroids[ccounter].x)+"],9)\">↗</a></td>")
                 for prop in feat["properties"]:
                     f.write("<td>"+str(feat["properties"][prop])+"</td>")
                 f.write("</tr>")
+                ccounter+=1
             f.write("</tbody></table>")    
             #f.write(gdf.to_html().replace("<table ","<table id=\"feattable\" "))
             f.write(htmlfooter.replace("{{footercontent}}",""))
