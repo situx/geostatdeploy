@@ -344,6 +344,10 @@ for file in os.listdir(rootdir):
                 newf.append(rewind(feat))
             else:
                 newf.append(feat)
+            if "id" not in feat and "id" in feat["properties"]:
+                newf[-1]["id"]=feat["properties"]["id"]
+            if "name" not in feat and "name" in feat["properties"]:
+                newf[-1]["name"]=feat["properties"]["name"]                
         res["features"]=newf
         if not os.path.exists(outpath + "/collections/" + fileid):
             os.makedirs(outpath + "/collections/" + fileid)
