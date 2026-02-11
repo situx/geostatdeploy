@@ -406,6 +406,10 @@ for file in os.listdir(rootdir):
             if not os.path.exists(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/"):
                 os.makedirs(outpath + "/collections/" + fileid + "/items/" + str(fid) + "/")
             res=json.loads(gdf.iloc[[i]].to_json())["features"][0]
+            if "id" not in res and "id" in res["properties"]:
+                res["id"]=res["properties"]["id"]
+            if "name" not in res and "name" in res["properties"]:
+                res["name"]=res["properties"]["name"] 
             res["numberMatched"]=1
             res["numberReturned"]=1
             res["crs"]=[formatCRS(str(gdf.crs))]
