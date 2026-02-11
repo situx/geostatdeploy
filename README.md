@@ -9,6 +9,10 @@ As a test you may try to incorporate the test dataset represented in this reposi
 
 https://situx.github.io/geostatdeploy/index.json
 
+In addition, the repository features an HTML representation of the OGC API Features Deployment available by browsing the Gitlab Page:
+
+https://situx.github.io/geostatdeploy/
+
 ## Why and when to use geostatdeploy 
 
 * You are unable to host an OGC API Features service but you have access to a webspace
@@ -47,4 +51,14 @@ These parameters are simply ignored because there is no actual web service imple
 Hence, no matter which parameters are appended, the whole feature collection or metadata description will be returned.
 
 A full deployment can be seen in the gh-pages branch of this repository as data and on the Github page of this repository.
+
+## Limitations
+
+GitHub pages and similar Webspaces such as Gitlab Pages do not support [Content Negotiation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation), i.e. let the browser choose a suitable return format from a GET request.
+To accomodate for that, many HTML pages of the deployment are named "indexc.html", so that the default returned page "index" is in JSON.
+This usually should neither concern the average user browsing the deployment nor the user accessing the deployment in clients such as QGIS.
+
+## HTML Templating
+
+Currently, the HTML template used by this tool is hardcoded, but templating support is planned in a future version.
  
