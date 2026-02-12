@@ -155,7 +155,7 @@ if (document.getElementById("map")){
                 html: "<span style=\"background-color: black;width: 1.5rem;height: 1.5rem;display: block;left: -1rem;top: 0rem;position: relative;border-radius: 3rem 3rem 0;transform: rotate(45deg);border: 1px solid #FFFFFF;\"></span>"
             })
             themarker=L.marker(latlng, {icon: greenIcon});
-            markerlist.push(themarker);
+            //markerlist.push(themarker);
             return themarker
         },
         onEachFeature: function (feature, layer) {layer.bindPopup(generateLeafletPopup(feature, layer))}
