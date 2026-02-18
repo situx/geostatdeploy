@@ -123,7 +123,13 @@ function generateLeafletPopup(feature, layer){
         }else if(Array.isArray(feature.properties[prop]) && (feature.properties[prop][0]+"").startsWith("http")){
             popup+="<a href=\""+feature.properties[prop][0]+"\" target=\"_blank\">"+feature.properties[prop][0].substring(feature.properties[prop][0].lastIndexOf('/')+1)+"</a>"
         }else{
-            popup+=feature.properties[prop]+""
+            if(feature.properties[prop].startsWith("http")){
+                popup+="<a href=\""+feature.properties[prop]+"\" target=\"_blank\">"+feature.properties[prop]+"</a>"
+            }else if(feature.properties[prop].includes("@")){
+                popup+="<a href=\"mailto:"+feature.properties[prop]+"\" target=\"_blank\">"+feature.properties[prop]+"</a>"
+            }else{
+                popup+=feature.properties[prop]+""
+            }         
         }
         popup+="</li>"
     }
