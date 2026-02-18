@@ -472,12 +472,15 @@ for file in os.listdir(rootdir):
             for feat in geodict["features"]:
                 f.write("<tr><td><a href=\""+str(feat["id"])+"/indexc.html\">"+str(feat["id"])+"</a>&nbsp;<a href=\"#\" onclick=\"map.flyTo(["+str(centroids[ccounter].y)+","+str(centroids[ccounter].x)+"],9)\">↗</a></td>")
                 for prop in feat["properties"]:
-                    if str(feat["properties"][prop]).startswith("http"):
-                        f.write("<td><a href=\""+str(feat["properties"][prop])+"\" target=\"_blank\">"+str(feat["properties"][prop])+"</a></td>")
-                    elif "@" in str(feat["properties"][prop]):
-                        f.write("<td><a href=\"mailto:"+str(feat["properties"][prop])+"\">"+str(feat["properties"][prop])+"</a></td>")
+                    thevalue=str(feat["properties"][prop]).strip()
+                    if thevalue.startswith("http"):
+                        f.write("<td><a href=\""+thevalue+"\" target=\"_blank\">"+thevalue+"</a></td>")
+                    elif thevalue.startswith("www."):
+                        f.write("<td><a href=\"https://"+thevalue+"\" target=\"_blank\">"+thevalue+"</a></td>")
+                    elif "@" in thevalue:
+                        f.write("<td><a href=\"mailto:"+thevalue+"\">"+thevalue+"</a></td>")
                     else:
-                        f.write("<td>"+str(feat["properties"][prop])+"</td>")
+                        f.write("<td>"+thevalue+"</td>")
                 f.write("</tr>")
                 ccounter+=1
             f.write("</tbody></table>")    
