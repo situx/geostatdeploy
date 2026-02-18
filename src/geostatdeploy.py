@@ -422,6 +422,10 @@ for file in os.listdir(rootdir):
                 newf.append(feat)
             if "id" not in feat and "id" in feat["properties"]:
                 newf[-1]["id"]=feat["properties"]["id"]
+            elif "ID" not in feat and "ID" in feat["properties"]:
+                newf[-1]["ID"]=feat["properties"]["ID"]
+            elif "fid" not in feat and "fid" in feat["properties"]:
+                newf[-1]["fid"]=feat["properties"]["fid"]
             if "name" not in feat and "name" in feat["properties"]:
                 newf[-1]["name"]=feat["properties"]["name"]                
         res["features"]=newf
