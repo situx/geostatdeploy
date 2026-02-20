@@ -217,6 +217,7 @@ print("The following arguments were not recognized: "+str(unknown))
 outpath = args.output
 rootdir = args.input
 deploypath = args.deploypath
+templatepath="../resources/html/default"
 
 if deploypath.endswith("/"):
     deploypath=deploypath[0:-1]
@@ -242,6 +243,14 @@ def createFolders(outpath):
     if not os.path.exists(outpath + "/conformance/"):
         os.makedirs(outpath + "/conformance/")
 
+if os.path.exists(templatepath):
+    print("Templatepath "+str(templatepath)+" EXISTS!")
+    if os.path.exists(templatepath+"/header.html"):
+        with open(templatepath+"/header.html","r") as f:
+            htmlheader=f.read()
+    if os.path.exists(templatepath+"/footer.html"):
+        with open(templatepath+"/footer.html","r") as f:
+            htmlheader=f.read()            
 
 
 indexhtml=htmlheader.replace("{{title}}","Static OGC API Features").replace("id=\"map\"","id=\"nomap\" style=\"visibility:none\"").replace("{{breadcrumb}}","<ul class=\"breadcrumb\"><li>Home</li></ul>")+"This is the landing page of this static OGC API features service.<ul><li><a href=\"api/api.html\">API as HTML</a></li><li><a href=\"collections/indexc.html\">Collections</li><li><a href=\"conformance/indexc.html\">Conformance</a></li></ul>"+htmlfooter.replace("{{footercontent}}","")+"</body></html>"
